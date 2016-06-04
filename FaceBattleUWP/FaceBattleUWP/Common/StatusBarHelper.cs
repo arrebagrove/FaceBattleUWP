@@ -13,5 +13,11 @@ namespace FaceBattleUWP.Common
             sb.BackgroundOpacity = 0;
             sb.ForegroundColor = Colors.Black;
         }
+
+        public static void SetUpWhiteStatusBar()
+        {
+            sb.BackgroundOpacity = 0;
+            sb.ForegroundColor = Colors.White;
+        }
     }
 }

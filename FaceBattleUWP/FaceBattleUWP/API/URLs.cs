@@ -14,5 +14,9 @@ namespace FaceBattleUWP.API
 
         public static string REGISTER => $"{DOMAIN}/user/signup";
 
+        public static string CREATE_BATTLE => $"{DOMAIN}/battle/create";
+
+        public static string GET_TIME => $"{DOMAIN}/time";
+
     }
 }

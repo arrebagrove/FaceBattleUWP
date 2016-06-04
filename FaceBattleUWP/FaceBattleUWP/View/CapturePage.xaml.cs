@@ -57,6 +57,8 @@ namespace FaceBattleUWP.View
 
         private bool _isCapturingFront = true;
 
+        private int _type;
+
         #region Constructor, lifecycle and navigation
 
         public CapturePage()
@@ -109,6 +111,11 @@ namespace FaceBattleUWP.View
             await SetupUIAsync();
             base.OnNavigatedTo(e);
             await InitializeCameraAsync();
+
+            if(e.Parameter is int)
+            {
+                _type = (int)e.Parameter;
+            }
         }
 
         protected override async void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -332,7 +339,7 @@ namespace FaceBattleUWP.View
 
                 var photoOrientation = OrientationHelper.ConvertOrientationToPhotoOrientation(GetCameraOrientation());
 
-                var file = await ReEncodeAndSavePhotoAsync(stream, _mirroringPreview ? PhotoOrientation.FlipHorizontal : PhotoOrientation.Normal);
+                var file = await ReEncodeAndSavePhotoAsync(stream, photoOrientation);
                 HandleTakenPhoto(file);
             }
             catch (Exception ex)
@@ -582,7 +589,11 @@ namespace FaceBattleUWP.View
 
         private void HandleTakenPhoto(StorageFile file)
         {
-            NavigationService.NaivgateToPage(typeof(UploadAnalysisPage), file);
+            NavigationService.NaivgateToPage(typeof(UploadAnalysisPage), new UploadStruct()
+            {
+                File=file,
+                Type=_type,
+            });
         }
     }
 }

@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" 
-    Background="{StaticResource FaceBattleBlackColor}">
+    Background="Black">
 
     <Grid Background="Black">
         <Grid.RowDefinitions>
@@ -38,8 +38,8 @@
                 <ProgressRing IsActive="True" Width="50" Height="50" Foreground="White"/>
                 <TextBlock Text="ANALYSYING..." HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS" Margin="0,5,0,0" FontSize="20"/>
                 <Button Command="{x:Bind UploadAnalysisVM.CancelLoadingCommand,Mode=OneWay}" Style="{StaticResource ButtonCommonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <Border CornerRadius="5" Height="50" Background="#FF3D3D3D" Margin="0,20,0,0">
-                        <TextBlock Text="CANCEL" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+                    <Border CornerRadius="5" Height="50" Background="#FFCECECE" Margin="0,20,0,0">
+                        <TextBlock Text="CANCEL" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS" Foreground="Black"/>
                     </Border>
                 </Button>
             </StackPanel>

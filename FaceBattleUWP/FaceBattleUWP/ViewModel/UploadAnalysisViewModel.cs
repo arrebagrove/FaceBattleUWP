@@ -1,8 +1,12 @@
-﻿using FaceBattleUWP.Common;
+﻿using FaceBattleControl;
+using FaceBattleUWP.API;
+using FaceBattleUWP.Common;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using JP.Utils.Data;
 using JP.Utils.Framework;
 using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Storage;
@@ -53,10 +57,27 @@ namespace FaceBattleUWP.ViewModel
             get
             {
                 if (_confirmLoadingCommand != null) return _confirmLoadingCommand;
-                return _confirmLoadingCommand = new RelayCommand(() =>
+                return _confirmLoadingCommand = new RelayCommand(async () =>
                   {
                       ShowLoading = Visibility.Visible;
                       ShowConfirmGrid = false;
+                      _cts = new CancellationTokenSource(20000);
+                      try
+                      {
+                          await UploadImageAsync();
+                      }
+                      catch (OperationCanceledException)
+                      {
+                          ShowLoading = Visibility.Collapsed;
+                          ShowConfirmGrid = true;
+                          ToastService.SendToast("Request timeout.");
+                      }
+                      catch (Exception e)
+                      {
+                          ShowLoading = Visibility.Collapsed;
+                          ShowConfirmGrid = true;
+                          ToastService.SendToast(e.Message);
+                      }
                   });
             }
         }
@@ -73,14 +94,11 @@ namespace FaceBattleUWP.ViewModel
                       {
                           _cts?.Cancel();
                       }
-                      catch (Exception)
-                      {
-
-                      }
-                      finally
+                      catch (OperationCanceledException)
                       {
                           ShowLoading = Visibility.Collapsed;
                           ShowConfirmGrid = true;
+                          ToastService.SendToast("Request cancel.");
                       }
                   });
             }
@@ -118,6 +136,8 @@ namespace FaceBattleUWP.ViewModel
 
         private CancellationTokenSource _cts;
 
+        private UploadStruct _data;
+
         public bool IsFirstActived { get; set; }
 
         public bool IsInView { get; set; }
@@ -127,9 +147,24 @@ namespace FaceBattleUWP.ViewModel
             ShowLoading = Visibility.Collapsed;
         }
 
-        private async Task DisplayImage(StorageFile file)
+        private async Task UploadImageAsync()
         {
-            using (var fs = await file.OpenReadAsync())
+            using (var memStream = new MemoryStream())
+            using (var fs = await _data.File.OpenReadAsync())
+            {
+                fs.AsStream().CopyTo(memStream);
+                var byteArray = memStream.ToArray();
+                var result = await CloudService.UploadImageAsync(LocalSettingHelper.GetValue("uid"),
+                    byteArray, _data.Type.ToString(), _cts.Token);
+                var content = await result.Content.ReadAsStringAsync();
+            }
+        }
+
+        private async Task DisplayImage()
+        {
+            if (_data.File == null) return;
+
+            using (var fs = await _data.File.OpenReadAsync())
             {
                 ImageBitmap = new BitmapImage();
                 await ImageBitmap.SetSourceAsync(fs);
@@ -138,10 +173,10 @@ namespace FaceBattleUWP.ViewModel
 
         public async void Activate(object param)
         {
-            if (param is StorageFile)
+            if (param is UploadStruct)
             {
-                var file = param as StorageFile;
-                await DisplayImage(file);
+                var data = param as UploadStruct;
+                await DisplayImage();
             }
         }
 

@@ -132,6 +132,8 @@
     <Compile Include="Common\OrientationHelper.cs" />
     <Compile Include="Common\StatusBarHelper.cs" />
     <Compile Include="Common\TitleBarHelper.cs" />
+    <Compile Include="Common\UploadStruct.cs" />
+    <Compile Include="Model\Battle.cs" />
     <Compile Include="Model\FBUser.cs" />
     <Compile Include="UC\AddControl.xaml.cs">
       <DependentUpon>AddControl.xaml</DependentUpon>
