@@ -79,6 +79,7 @@ namespace FaceBattleUWP.View
         {
             _colorVisual = CreateVisualWithColorAndPosition(color, initialBounds, finalBounds);
 
+            _containerForVisuals.Children.RemoveAll();
             // add our solid colored circle visual to the live visual tree via the container
             _containerForVisuals.Children.InsertAtTop(_colorVisual);
 
@@ -95,7 +96,6 @@ namespace FaceBattleUWP.View
         }
 
         #endregion
-
 
         #region All the heavy lifting
         /// <summary>
@@ -117,8 +117,7 @@ namespace FaceBattleUWP.View
 
             // the diameter of the circular visual is an essential bit of information
             // in initializing our bloom animation - a one-time thing
-            if (_bloomAnimation == null)
-                InitializeBloomAnimation(circleColorVisualDiameter / 2, finalBounds); // passing in the radius
+            InitializeBloomAnimation(circleColorVisualDiameter / 2, finalBounds); // passing in the radius
 
             // we are going to some lengths to have the visual precisely placed
             // such that the center of the circular visual coincides with the center of the AppBarButton.

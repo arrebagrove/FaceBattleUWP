@@ -147,6 +147,7 @@
     </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\StartViewModel.cs" />
+    <Compile Include="ViewModel\UploadAnalysisViewModel.cs" />
     <Compile Include="View\CapturePage.xaml.cs">
       <DependentUpon>CapturePage.xaml</DependentUpon>
     </Compile>
@@ -157,6 +158,9 @@
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UploadAnalysisPage.xaml.cs">
+      <DependentUpon>UploadAnalysisPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -261,6 +265,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UploadAnalysisPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

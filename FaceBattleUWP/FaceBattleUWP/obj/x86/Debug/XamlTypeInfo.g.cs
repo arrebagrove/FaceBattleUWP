@@ -156,7 +156,7 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[31];
+            _typeNameTable = new string[33];
             _typeNameTable[0] = "FcaeBattleUWP.ViewModel.ViewModelLocator";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "FaceBattleUWP.UC.AddControl";
@@ -188,8 +188,10 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
             _typeNameTable[28] = "Windows.System.VirtualKey";
             _typeNameTable[29] = "System.Enum";
             _typeNameTable[30] = "FaceBattleUWP.View.StartPage";
+            _typeNameTable[31] = "FaceBattleUWP.View.UploadAnalysisPage";
+            _typeNameTable[32] = "Boolean";
 
-            _typeTable = new global::System.Type[31];
+            _typeTable = new global::System.Type[33];
             _typeTable[0] = typeof(global::FcaeBattleUWP.ViewModel.ViewModelLocator);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::FaceBattleUWP.UC.AddControl);
@@ -221,6 +223,8 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
             _typeTable[28] = typeof(global::Windows.System.VirtualKey);
             _typeTable[29] = typeof(global::System.Enum);
             _typeTable[30] = typeof(global::FaceBattleUWP.View.StartPage);
+            _typeTable[31] = typeof(global::FaceBattleUWP.View.UploadAnalysisPage);
+            _typeTable[32] = typeof(global::System.Boolean);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -270,6 +274,7 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
         private object Activate_24_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }
         private object Activate_26_InvokeCommandByKeyDown() { return new global::JP.Utils.Framework.InvokeCommandByKeyDown(); }
         private object Activate_30_StartPage() { return new global::FaceBattleUWP.View.StartPage(); }
+        private object Activate_31_UploadAnalysisPage() { return new global::FaceBattleUWP.View.UploadAnalysisPage(); }
         private void VectorAdd_19_BehaviorCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
@@ -653,6 +658,18 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
+
+            case 31:   //  FaceBattleUWP.View.UploadAnalysisPage
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("FaceBattleUWP.Common.BindablePage"));
+                userType.Activator = Activate_31_UploadAnalysisPage;
+                userType.AddMemberName("ShowConfrim");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 32:   //  Boolean
+                xamlType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
             }
             return xamlType;
         }
@@ -819,6 +836,16 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
             var that = (global::JP.Utils.Framework.InvokeCommandByKeyDown)instance;
             that.PressedKey = (global::Windows.System.VirtualKey)Value;
         }
+        private object get_12_UploadAnalysisPage_ShowConfrim(object instance)
+        {
+            var that = (global::FaceBattleUWP.View.UploadAnalysisPage)instance;
+            return that.ShowConfrim;
+        }
+        private void set_12_UploadAnalysisPage_ShowConfrim(object instance, object Value)
+        {
+            var that = (global::FaceBattleUWP.View.UploadAnalysisPage)instance;
+            that.ShowConfrim = (global::System.Boolean)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -905,6 +932,13 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
                 xamlMember.SetIsDependencyProperty();
                 xamlMember.Getter = get_11_InvokeCommandByKeyDown_PressedKey;
                 xamlMember.Setter = set_11_InvokeCommandByKeyDown_PressedKey;
+                break;
+            case "FaceBattleUWP.View.UploadAnalysisPage.ShowConfrim":
+                userType = (global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("FaceBattleUWP.View.UploadAnalysisPage");
+                xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "ShowConfrim", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_12_UploadAnalysisPage_ShowConfrim;
+                xamlMember.Setter = set_12_UploadAnalysisPage_ShowConfrim;
                 break;
             }
             return xamlMember;

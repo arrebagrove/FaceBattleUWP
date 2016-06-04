@@ -62,13 +62,15 @@ namespace FaceBattleUWP.View
         public CapturePage()
         {
             this.InitializeComponent();
+            if(!DesignMode.DesignModeEnabled)
+            {
+                // Do not cache the state of the UI when suspending/navigating
+                NavigationCacheMode = NavigationCacheMode.Disabled;
 
-            // Do not cache the state of the UI when suspending/navigating
-            NavigationCacheMode = NavigationCacheMode.Disabled;
-
-            // Useful to know when to initialize/clean up the camera
-            Application.Current.Suspending += Application_Suspending;
-            Application.Current.Resuming += Application_Resuming;
+                // Useful to know when to initialize/clean up the camera
+                Application.Current.Suspending += Application_Suspending;
+                Application.Current.Resuming += Application_Resuming;
+            }
         }
 
         protected override void SetupTitleBar()
@@ -156,59 +158,66 @@ namespace FaceBattleUWP.View
         /// <returns></returns>
         private async Task InitializeCameraAsync()
         {
-            if (_mediaCapture == null)
+            try
             {
-                // Attempt to get the back camera if one is available, but use any camera device if not
-                var cameraDevice = await FindCameraDeviceByPanelAsync(
-                    _isCapturingFront ? Windows.Devices.Enumeration.Panel.Front : Windows.Devices.Enumeration.Panel.Back);
-
-                if (cameraDevice == null)
+                if (_mediaCapture == null)
                 {
-                    ToastService.SendToast("No" + (_isCapturingFront ? "front" : "back") + " camera found.");
-                    return;
-                }
+                    // Attempt to get the back camera if one is available, but use any camera device if not
+                    var cameraDevice = await FindCameraDeviceByPanelAsync(
+                        _isCapturingFront ? Windows.Devices.Enumeration.Panel.Front : Windows.Devices.Enumeration.Panel.Back);
 
-                // Create MediaCapture and its settings
-                _mediaCapture = new MediaCapture();
-
-                // Register for a notification when video recording has reached the maximum time and when something goes wrong
-                _mediaCapture.Failed += MediaCapture_Failed;
-
-                var settings = new MediaCaptureInitializationSettings { VideoDeviceId = cameraDevice.Id };
-
-                // Initialize MediaCapture
-                try
-                {
-                    await _mediaCapture.InitializeAsync(settings);
-
-                    _isInitialized = true;
-                }
-                catch (UnauthorizedAccessException)
-                {
-                    ToastService.SendToast("The app was denied access to the camera.");
-                }
-
-                // If initialization succeeded, start the preview
-                if (_isInitialized)
-                {
-                    // Figure out where the camera is located
-                    if (cameraDevice.EnclosureLocation == null ||
-                        cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Unknown)
+                    if (cameraDevice == null)
                     {
-                        // No information on the location of the camera, assume it's an external camera, not integrated on the device
-                        _externalCamera = true;
-                    }
-                    else
-                    {
-                        // Camera is fixed on the device
-                        _externalCamera = false;
-
-                        // Only mirror the preview if the camera is on the front panel
-                        _mirroringPreview = (cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Front);
+                        ToastService.SendToast("No" + (_isCapturingFront ? "front" : "back") + " camera found.");
+                        return;
                     }
 
-                    await StartPreviewAsync();
+                    // Create MediaCapture and its settings
+                    _mediaCapture = new MediaCapture();
+
+                    // Register for a notification when video recording has reached the maximum time and when something goes wrong
+                    _mediaCapture.Failed += MediaCapture_Failed;
+
+                    var settings = new MediaCaptureInitializationSettings { VideoDeviceId = cameraDevice.Id };
+
+                    // Initialize MediaCapture
+                    try
+                    {
+                        await _mediaCapture.InitializeAsync(settings);
+
+                        _isInitialized = true;
+                    }
+                    catch (UnauthorizedAccessException)
+                    {
+                        ToastService.SendToast("The app was denied access to the camera.");
+                    }
+
+                    // If initialization succeeded, start the preview
+                    if (_isInitialized)
+                    {
+                        // Figure out where the camera is located
+                        if (cameraDevice.EnclosureLocation == null ||
+                            cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Unknown)
+                        {
+                            // No information on the location of the camera, assume it's an external camera, not integrated on the device
+                            _externalCamera = true;
+                        }
+                        else
+                        {
+                            // Camera is fixed on the device
+                            _externalCamera = false;
+
+                            // Only mirror the preview if the camera is on the front panel
+                            _mirroringPreview = (cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Front);
+                        }
+
+                        await StartPreviewAsync();
+                    }
                 }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -323,7 +332,7 @@ namespace FaceBattleUWP.View
 
                 var photoOrientation = OrientationHelper.ConvertOrientationToPhotoOrientation(GetCameraOrientation());
 
-                var file = await ReEncodeAndSavePhotoAsync(stream, photoOrientation);
+                var file = await ReEncodeAndSavePhotoAsync(stream, _mirroringPreview ? PhotoOrientation.FlipHorizontal : PhotoOrientation.Normal);
                 HandleTakenPhoto(file);
             }
             catch (Exception ex)
@@ -573,7 +582,7 @@ namespace FaceBattleUWP.View
 
         private void HandleTakenPhoto(StorageFile file)
         {
-
+            NavigationService.NaivgateToPage(typeof(UploadAnalysisPage), file);
         }
     }
 }

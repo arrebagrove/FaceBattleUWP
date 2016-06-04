@@ -1,14 +1,16 @@
-﻿using FaceBattleControl;
+﻿using System;
+using FaceBattleControl;
 using FaceBattleUWP.Common;
 using FaceBattleUWP.Model;
 using FaceBattleUWP.View;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using JP.Utils.Data;
+using JP.Utils.Framework;
 
 namespace FaceBattleUWP.ViewModel
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase,INavigable
     {
         private FBUser _currentUser;
         public FBUser CurrentUser
@@ -76,6 +78,9 @@ namespace FaceBattleUWP.ViewModel
             }
         }
 
+        public bool IsInView { get; set; }
+
+        public bool IsFirstActived { get; set; }
 
         public MainViewModel()
         {
@@ -94,6 +99,21 @@ namespace FaceBattleUWP.ViewModel
                 UserName = userName,
                 AuthCode = authCode,
             };
+        }
+
+        public void Activate(object param)
+        {
+            
+        }
+
+        public void Deactivate(object param)
+        {
+            
+        }
+
+        public void OnLoaded()
+        {
+            
         }
     }
 }
