@@ -1,10 +1,14 @@
-﻿using GalaSoft.MvvmLight;
+﻿using FaceBattleControl;
+using FaceBattleUWP.API;
+using FaceBattleUWP.Common;
+using FaceBattleUWP.View;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using JP.Utils.Data;
+using JP.Utils.Data.Json;
+using JP.Utils.Network;
 using System.Threading.Tasks;
+using Windows.Data.Json;
 using Windows.UI.Xaml;
 
 namespace FaceBattleUWP.ViewModel
@@ -122,6 +126,23 @@ namespace FaceBattleUWP.ViewModel
             }
         }
 
+        private Visibility _isLoading;
+        public Visibility IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                if (_isLoading != value)
+                {
+                    _isLoading = value;
+                    RaisePropertyChanged(() => IsLoading);
+                }
+            }
+        }
+
         private RelayCommand _switchModeCommand;
         public RelayCommand SwitchModeCommand
         {
@@ -148,9 +169,18 @@ namespace FaceBattleUWP.ViewModel
             get
             {
                 if (_nextCommand != null) return _nextCommand;
-                return _nextCommand = new RelayCommand(() =>
+                return _nextCommand = new RelayCommand(async () =>
                   {
-
+                      IsLoading = Visibility.Visible;
+                      if (CheckInput())
+                      {
+                          if (LoginMode == LoginMode.Login)
+                          {
+                              await LoginAsync();
+                          }
+                          else await RegisterAsync();
+                      }
+                      IsLoading = Visibility.Collapsed;
                   });
             }
         }
@@ -184,6 +214,88 @@ namespace FaceBattleUWP.ViewModel
             LoginMode = LoginMode.Login;
             ShowConfirmedPassword = Visibility.Collapsed;
             SwitchHintText = SWITCH_TO_REGISTER_TEXT;
+            ConfirmedPassword = "";
+            IsLoading = Visibility.Collapsed;
+        }
+
+        private bool CheckInput()
+        {
+            if (string.IsNullOrEmpty(UserName))
+            {
+                ToastService.SendToast("Please input username.");
+                return false;
+            }
+            if (string.IsNullOrEmpty(Password))
+            {
+                ToastService.SendToast("Please input password.");
+                return false;
+            }
+            if (string.IsNullOrEmpty(ConfirmedPassword) && LoginMode == LoginMode.Register)
+            {
+                ToastService.SendToast("Please input password again.");
+                return false;
+            }
+            if (ConfirmedPassword != Password && LoginMode == LoginMode.Register)
+            {
+                ToastService.SendToast("Make sure two passwords are the same.");
+                return false;
+            }
+            if (UserName.Length < 4)
+            {
+                ToastService.SendToast("User name must be at least 4 letters.");
+                return false;
+            }
+            if (Password.Length < 8)
+            {
+                ToastService.SendToast("Password must be at least 8 letters.");
+                return false;
+            }
+            if (ConfirmedPassword.Length < 8 && LoginMode == LoginMode.Register)
+            {
+                ToastService.SendToast("Password must be at least 8 letters.");
+                return false;
+            }
+            return true;
+        }
+
+        private async Task LoginAsync()
+        {
+            var result = await CloudService.LoginAsync(UserName, Password, CTSFactory.MakeCTS(5000).Token);
+            result.CheckAPIResult();
+            if (result.ErrorCode != 200)
+            {
+                ToastService.SendToast(result.ErrorMsg);
+                return;
+            }
+            else
+            {
+                var jsonObj = JsonObject.Parse(result.JsonSrc);
+                var dataObj = JsonParser.GetJsonObjFromJsonObj(jsonObj, "data");
+                var uid = JsonParser.GetStringFromJsonObj(dataObj, "uid");
+                var userName = JsonParser.GetStringFromJsonObj(dataObj, "username");
+                var authCode = JsonParser.GetStringFromJsonObj(dataObj, "authcode");
+
+                LocalSettingHelper.AddValue("uid", uid);
+                LocalSettingHelper.AddValue("username", userName);
+                LocalSettingHelper.AddValue("authcode", authCode);
+
+                NavigationService.NaivgateToPage(typeof(MainPage));
+            }
+        }
+
+        private async Task RegisterAsync()
+        {
+            var result = await CloudService.RegisterAsync(UserName, Password, CTSFactory.MakeCTS(5000).Token);
+            result.CheckAPIResult();
+            if (result.ErrorCode != 200)
+            {
+                ToastService.SendToast(result.ErrorMsg);
+                return;
+            }
+            else
+            {
+                NavigationService.NaivgateToPage(typeof(MainPage));
+            }
         }
     }
 }

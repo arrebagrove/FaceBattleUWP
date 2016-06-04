@@ -156,31 +156,45 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[11];
+            _typeNameTable = new string[18];
             _typeNameTable[0] = "FcaeBattleUWP.ViewModel.ViewModelLocator";
             _typeNameTable[1] = "Object";
-            _typeNameTable[2] = "FaceBattleUWP.View.MainPage";
-            _typeNameTable[3] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[4] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[5] = "Windows.UI.Color";
-            _typeNameTable[6] = "System.ValueType";
-            _typeNameTable[7] = "Byte";
-            _typeNameTable[8] = "Windows.UI.Text.FontWeight";
-            _typeNameTable[9] = "FaceBattleUWP.Common.BindablePage";
-            _typeNameTable[10] = "FaceBattleUWP.View.StartPage";
+            _typeNameTable[2] = "FaceBattleUWP.UC.AddControl";
+            _typeNameTable[3] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[4] = "FaceBattleUWP.UC.HistoryControl";
+            _typeNameTable[5] = "FaceBattleUWP.UC.MeControl";
+            _typeNameTable[6] = "FaceBattleUWP.ViewModel.MainViewModel";
+            _typeNameTable[7] = "GalaSoft.MvvmLight.ViewModelBase";
+            _typeNameTable[8] = "GalaSoft.MvvmLight.ObservableObject";
+            _typeNameTable[9] = "FaceBattleUWP.UC.PublicControl";
+            _typeNameTable[10] = "FaceBattleUWP.Common.BindablePage";
+            _typeNameTable[11] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[12] = "FaceBattleUWP.View.MainPage";
+            _typeNameTable[13] = "Windows.UI.Color";
+            _typeNameTable[14] = "System.ValueType";
+            _typeNameTable[15] = "Byte";
+            _typeNameTable[16] = "Windows.UI.Text.FontWeight";
+            _typeNameTable[17] = "FaceBattleUWP.View.StartPage";
 
-            _typeTable = new global::System.Type[11];
+            _typeTable = new global::System.Type[18];
             _typeTable[0] = typeof(global::FcaeBattleUWP.ViewModel.ViewModelLocator);
             _typeTable[1] = typeof(global::System.Object);
-            _typeTable[2] = typeof(global::FaceBattleUWP.View.MainPage);
-            _typeTable[3] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[4] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[5] = typeof(global::Windows.UI.Color);
-            _typeTable[6] = typeof(global::System.ValueType);
-            _typeTable[7] = typeof(global::System.Byte);
-            _typeTable[8] = typeof(global::Windows.UI.Text.FontWeight);
-            _typeTable[9] = typeof(global::FaceBattleUWP.Common.BindablePage);
-            _typeTable[10] = typeof(global::FaceBattleUWP.View.StartPage);
+            _typeTable[2] = typeof(global::FaceBattleUWP.UC.AddControl);
+            _typeTable[3] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[4] = typeof(global::FaceBattleUWP.UC.HistoryControl);
+            _typeTable[5] = typeof(global::FaceBattleUWP.UC.MeControl);
+            _typeTable[6] = typeof(global::FaceBattleUWP.ViewModel.MainViewModel);
+            _typeTable[7] = typeof(global::GalaSoft.MvvmLight.ViewModelBase);
+            _typeTable[8] = typeof(global::GalaSoft.MvvmLight.ObservableObject);
+            _typeTable[9] = typeof(global::FaceBattleUWP.UC.PublicControl);
+            _typeTable[10] = typeof(global::FaceBattleUWP.Common.BindablePage);
+            _typeTable[11] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[12] = typeof(global::FaceBattleUWP.View.MainPage);
+            _typeTable[13] = typeof(global::Windows.UI.Color);
+            _typeTable[14] = typeof(global::System.ValueType);
+            _typeTable[15] = typeof(global::System.Byte);
+            _typeTable[16] = typeof(global::Windows.UI.Text.FontWeight);
+            _typeTable[17] = typeof(global::FaceBattleUWP.View.StartPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -216,9 +230,15 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
         }
 
         private object Activate_0_ViewModelLocator() { return new global::FcaeBattleUWP.ViewModel.ViewModelLocator(); }
-        private object Activate_2_MainPage() { return new global::FaceBattleUWP.View.MainPage(); }
-        private object Activate_9_BindablePage() { return new global::FaceBattleUWP.Common.BindablePage(); }
-        private object Activate_10_StartPage() { return new global::FaceBattleUWP.View.StartPage(); }
+        private object Activate_2_AddControl() { return new global::FaceBattleUWP.UC.AddControl(); }
+        private object Activate_4_HistoryControl() { return new global::FaceBattleUWP.UC.HistoryControl(); }
+        private object Activate_5_MeControl() { return new global::FaceBattleUWP.UC.MeControl(); }
+        private object Activate_6_MainViewModel() { return new global::FaceBattleUWP.ViewModel.MainViewModel(); }
+        private object Activate_8_ObservableObject() { return new global::GalaSoft.MvvmLight.ObservableObject(); }
+        private object Activate_9_PublicControl() { return new global::FaceBattleUWP.UC.PublicControl(); }
+        private object Activate_10_BindablePage() { return new global::FaceBattleUWP.Common.BindablePage(); }
+        private object Activate_12_MainPage() { return new global::FaceBattleUWP.View.MainPage(); }
+        private object Activate_17_StartPage() { return new global::FaceBattleUWP.View.StartPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -241,22 +261,76 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
                 xamlType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 2:   //  FaceBattleUWP.View.MainPage
-                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_2_MainPage;
+            case 2:   //  FaceBattleUWP.UC.AddControl
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_2_AddControl;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 3:   //  Windows.UI.Xaml.Controls.Page
+            case 3:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 4:   //  Windows.UI.Xaml.Controls.UserControl
+            case 4:   //  FaceBattleUWP.UC.HistoryControl
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_4_HistoryControl;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 5:   //  FaceBattleUWP.UC.MeControl
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_5_MeControl;
+                userType.AddMemberName("MainVM");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 6:   //  FaceBattleUWP.ViewModel.MainViewModel
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("GalaSoft.MvvmLight.ViewModelBase"));
+                userType.SetIsReturnTypeStub();
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 7:   //  GalaSoft.MvvmLight.ViewModelBase
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("GalaSoft.MvvmLight.ObservableObject"));
+                xamlType = userType;
+                break;
+
+            case 8:   //  GalaSoft.MvvmLight.ObservableObject
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_8_ObservableObject;
+                xamlType = userType;
+                break;
+
+            case 9:   //  FaceBattleUWP.UC.PublicControl
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_9_PublicControl;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 10:   //  FaceBattleUWP.Common.BindablePage
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_10_BindablePage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 11:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 5:   //  Windows.UI.Color
+            case 12:   //  FaceBattleUWP.View.MainPage
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("FaceBattleUWP.Common.BindablePage"));
+                userType.Activator = Activate_12_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 13:   //  Windows.UI.Color
                 userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.AddMemberName("A");
                 userType.AddMemberName("B");
@@ -265,32 +339,25 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 6:   //  System.ValueType
+            case 14:   //  System.ValueType
                 userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 7:   //  Byte
+            case 15:   //  Byte
                 userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 8:   //  Windows.UI.Text.FontWeight
+            case 16:   //  Windows.UI.Text.FontWeight
                 userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 xamlType = userType;
                 break;
 
-            case 9:   //  FaceBattleUWP.Common.BindablePage
-                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_9_BindablePage;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 10:   //  FaceBattleUWP.View.StartPage
+            case 17:   //  FaceBattleUWP.View.StartPage
                 userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("FaceBattleUWP.Common.BindablePage"));
-                userType.Activator = Activate_10_StartPage;
+                userType.Activator = Activate_17_StartPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -307,7 +374,11 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
                 {
                     var otherProviders = new global::System.Collections.Generic.List<global::Windows.UI.Xaml.Markup.IXamlMetadataProvider>();
                     global::Windows.UI.Xaml.Markup.IXamlMetadataProvider provider;
+                    provider = new global::FaceBattleControl.FaceBattleControl_XamlTypeInfo.XamlMetaDataProvider() as global::Windows.UI.Xaml.Markup.IXamlMetadataProvider;
+                    otherProviders.Add(provider); 
                     provider = new global::JP.Utils.JP_Utils_UWP_XamlTypeInfo.XamlMetaDataProvider() as global::Windows.UI.Xaml.Markup.IXamlMetadataProvider;
+                    otherProviders.Add(provider); 
+                    provider = new global::SamplesCommon.SamplesCommon_XamlTypeInfo.XamlMetaDataProvider() as global::Windows.UI.Xaml.Markup.IXamlMetadataProvider;
                     otherProviders.Add(provider); 
                     _otherProviders = otherProviders;
                 }
@@ -353,42 +424,47 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
             return foundXamlType;
         }
 
-        private object get_0_Color_A(object instance)
+        private object get_0_MeControl_MainVM(object instance)
+        {
+            var that = (global::FaceBattleUWP.UC.MeControl)instance;
+            return that.MainVM;
+        }
+        private object get_1_Color_A(object instance)
         {
             var that = (global::Windows.UI.Color)instance;
             return that.A;
         }
-        private void set_0_Color_A(object instance, object Value)
+        private void set_1_Color_A(object instance, object Value)
         {
             var that = (global::Windows.UI.Color)instance;
             that.A = (global::System.Byte)Value;
         }
-        private object get_1_Color_B(object instance)
+        private object get_2_Color_B(object instance)
         {
             var that = (global::Windows.UI.Color)instance;
             return that.B;
         }
-        private void set_1_Color_B(object instance, object Value)
+        private void set_2_Color_B(object instance, object Value)
         {
             var that = (global::Windows.UI.Color)instance;
             that.B = (global::System.Byte)Value;
         }
-        private object get_2_Color_G(object instance)
+        private object get_3_Color_G(object instance)
         {
             var that = (global::Windows.UI.Color)instance;
             return that.G;
         }
-        private void set_2_Color_G(object instance, object Value)
+        private void set_3_Color_G(object instance, object Value)
         {
             var that = (global::Windows.UI.Color)instance;
             that.G = (global::System.Byte)Value;
         }
-        private object get_3_Color_R(object instance)
+        private object get_4_Color_R(object instance)
         {
             var that = (global::Windows.UI.Color)instance;
             return that.R;
         }
-        private void set_3_Color_R(object instance, object Value)
+        private void set_4_Color_R(object instance, object Value)
         {
             var that = (global::Windows.UI.Color)instance;
             that.R = (global::System.Byte)Value;
@@ -401,29 +477,35 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
 
             switch (longMemberName)
             {
+            case "FaceBattleUWP.UC.MeControl.MainVM":
+                userType = (global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("FaceBattleUWP.UC.MeControl");
+                xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "MainVM", "FaceBattleUWP.ViewModel.MainViewModel");
+                xamlMember.Getter = get_0_MeControl_MainVM;
+                xamlMember.SetIsReadOnly();
+                break;
             case "Windows.UI.Color.A":
                 userType = (global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
                 xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "A", "Byte");
-                xamlMember.Getter = get_0_Color_A;
-                xamlMember.Setter = set_0_Color_A;
+                xamlMember.Getter = get_1_Color_A;
+                xamlMember.Setter = set_1_Color_A;
                 break;
             case "Windows.UI.Color.B":
                 userType = (global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
                 xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "B", "Byte");
-                xamlMember.Getter = get_1_Color_B;
-                xamlMember.Setter = set_1_Color_B;
+                xamlMember.Getter = get_2_Color_B;
+                xamlMember.Setter = set_2_Color_B;
                 break;
             case "Windows.UI.Color.G":
                 userType = (global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
                 xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "G", "Byte");
-                xamlMember.Getter = get_2_Color_G;
-                xamlMember.Setter = set_2_Color_G;
+                xamlMember.Getter = get_3_Color_G;
+                xamlMember.Setter = set_3_Color_G;
                 break;
             case "Windows.UI.Color.R":
                 userType = (global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
                 xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "R", "Byte");
-                xamlMember.Getter = get_3_Color_R;
-                xamlMember.Setter = set_3_Color_R;
+                xamlMember.Getter = get_4_Color_R;
+                xamlMember.Setter = set_4_Color_R;
                 break;
             }
             return xamlMember;

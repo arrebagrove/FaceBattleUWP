@@ -46,5 +46,10 @@ namespace FaceBattleUWP.Common
                 else return false;
             }
         }
+
+        public static void ClearBaskStack()
+        {
+            RootFrame?.BackStack.Clear();
+        }
     }
 }

@@ -26,5 +26,11 @@ namespace FaceBattleUWP.View
             this.InitializeComponent();
             this.DataContext = StartVM = new StartViewModel();
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            NavigationService.ClearBaskStack();
+        }
     }
 }

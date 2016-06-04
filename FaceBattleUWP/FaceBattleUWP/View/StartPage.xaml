@@ -6,7 +6,7 @@
     xmlns:base="using:FaceBattleUWP.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Background="{StaticResource FaceBattleMainColor}">
     
     <Grid Background="{StaticResource FaceBattleMainColor}">
         <Grid.RowDefinitions>
@@ -24,16 +24,16 @@
         </StackPanel>
         <StackPanel Grid.Row="1" MaxWidth="600">
             <Border MaxWidth="300" Margin="5" BorderBrush="Black" BorderThickness="2" CornerRadius="10">
-                <TextBox Margin="2" Background="{x:Null}" IsSpellCheckEnabled="False" Text="{x:Bind StartVM.UserName,Mode=OneWay}" PlaceholderText="USER NAME" BorderBrush="{x:Null}" Foreground="Black" FontFamily="ms-appx:/Assets/comicz.ttf#Comic Sans MS" Style="{StaticResource TextBoxStyle1}" VerticalAlignment="Center" InputScope="Text"/>
+                <TextBox Margin="2" Background="{x:Null}" IsSpellCheckEnabled="False" Text="{x:Bind StartVM.UserName,Mode=TwoWay}" PlaceholderText="USER NAME" BorderBrush="{x:Null}" Foreground="Black" FontFamily="ms-appx:/Assets/comicz.ttf#Comic Sans MS" Style="{StaticResource TextBoxStyle1}" VerticalAlignment="Center" InputScope="Text"/>
             </Border>
             <Border MaxWidth="300" Margin="5" BorderBrush="Black" BorderThickness="2" CornerRadius="10">
-                <PasswordBox Margin="2" Background="{x:Null}" Password="{x:Bind StartVM.Password,Mode=OneWay}" Style="{StaticResource PasswordBoxStyle1}" PlaceholderText="PASSWORD" BorderBrush="{x:Null}" Foreground="Black" FontFamily="ms-appx:/Assets/comicz.ttf#Comic Sans MS" VerticalAlignment="Center" />
+                <PasswordBox Margin="2" Background="{x:Null}" Password="{x:Bind StartVM.Password,Mode=TwoWay}" Style="{StaticResource PasswordBoxStyle1}" PlaceholderText="PASSWORD" BorderBrush="{x:Null}" Foreground="Black" FontFamily="ms-appx:/Assets/comicz.ttf#Comic Sans MS" VerticalAlignment="Center" />
             </Border>
             <Border Visibility="{x:Bind StartVM.ShowConfirmedPassword,Mode=OneWay}" MaxWidth="300" Margin="5" BorderBrush="Black" BorderThickness="2" CornerRadius="10">
-                <PasswordBox Margin="2" Background="{x:Null}" Password="{x:Bind StartVM.ConfirmedPassword,Mode=OneWay}" Style="{StaticResource PasswordBoxStyle1}" PlaceholderText="CONFRIM PASSWORD" BorderBrush="{x:Null}" Foreground="Black" FontFamily="ms-appx:/Assets/comicz.ttf#Comic Sans MS" VerticalAlignment="Center" />
+                <PasswordBox Margin="2" Background="{x:Null}" Password="{x:Bind StartVM.ConfirmedPassword,Mode=TwoWay}" Style="{StaticResource PasswordBoxStyle1}" PlaceholderText="CONFRIM PASSWORD" BorderBrush="{x:Null}" Foreground="Black" FontFamily="ms-appx:/Assets/comicz.ttf#Comic Sans MS" VerticalAlignment="Center" />
             </Border>
             <Button Command="{x:Bind StartVM.NextCommand,Mode=OneWay}" MaxWidth="300" Margin="5" Style="{StaticResource ButtonCommonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0">
-                <Border BorderThickness="2" CornerRadius="10" Background="Black" BorderBrush="Black">
+                <Border BorderThickness="2" CornerRadius="10" Background="Black">
                     <TextBlock Margin="10" Text="{x:Bind StartVM.NextBtnText,Mode=OneWay}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="ms-appx:/Assets/comicz.ttf#Comic Sans MS"/>
                 </Border>
             </Button>
@@ -43,5 +43,9 @@
                 </Border>
             </Button>
         </StackPanel>
+        <ProgressBar
+            IsIndeterminate="True"
+            Visibility="{x:Bind StartVM.IsLoading,Mode=OneWay}"
+            VerticalAlignment="Top" Foreground="{StaticResource FaceBattleBlackColor}"/>
     </Grid>
 </base:BindablePage>

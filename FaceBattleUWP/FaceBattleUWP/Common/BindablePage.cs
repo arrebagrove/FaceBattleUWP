@@ -2,6 +2,7 @@
 using JP.Utils.Helper;
 using System;
 using System.Diagnostics;
+using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.Phone.UI.Input;
 using Windows.UI.Core;
@@ -18,10 +19,13 @@ namespace FaceBattleUWP.Common
 
         public BindablePage()
         {
-            SetUpPageAnimation();
-            SetUpNavigationCache();
-            IsTextScaleFactorEnabled = false;
-            this.Loaded += BindablePage_Loaded;
+            if(!DesignMode.DesignModeEnabled)
+            {
+                SetUpPageAnimation();
+                SetUpNavigationCache();
+                IsTextScaleFactorEnabled = false;
+                this.Loaded += BindablePage_Loaded;
+            }
         }
 
         private void BindablePage_Loaded(object sender, RoutedEventArgs e)

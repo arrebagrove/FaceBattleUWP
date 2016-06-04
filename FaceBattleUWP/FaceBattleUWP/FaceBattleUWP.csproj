@@ -92,17 +92,59 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Avatar\1.png" />
+    <Content Include="Assets\Avatar\10.png" />
+    <Content Include="Assets\Avatar\11.png" />
+    <Content Include="Assets\Avatar\12.png" />
+    <Content Include="Assets\Avatar\13.png" />
+    <Content Include="Assets\Avatar\14.png" />
+    <Content Include="Assets\Avatar\15.png" />
+    <Content Include="Assets\Avatar\16.png" />
+    <Content Include="Assets\Avatar\17.png" />
+    <Content Include="Assets\Avatar\18.png" />
+    <Content Include="Assets\Avatar\19.png" />
+    <Content Include="Assets\Avatar\2.png" />
+    <Content Include="Assets\Avatar\20.png" />
+    <Content Include="Assets\Avatar\21.png" />
+    <Content Include="Assets\Avatar\22.png" />
+    <Content Include="Assets\Avatar\23.png" />
+    <Content Include="Assets\Avatar\24.png" />
+    <Content Include="Assets\Avatar\3.png" />
+    <Content Include="Assets\Avatar\4.png" />
+    <Content Include="Assets\Avatar\5.png" />
+    <Content Include="Assets\Avatar\6.png" />
+    <Content Include="Assets\Avatar\7.png" />
+    <Content Include="Assets\Avatar\8.png" />
+    <Content Include="Assets\Avatar\9.png" />
     <Content Include="Assets\comic.ttf" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\CloudService.cs" />
+    <Compile Include="API\URLs.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\BindablePage.cs" />
+    <Compile Include="Common\ColorBloomTransitionHelper.cs" />
+    <Compile Include="Common\ConfigHelper.cs" />
     <Compile Include="Common\NavigationService.cs" />
     <Compile Include="Common\StatusBarHelper.cs" />
     <Compile Include="Common\TitleBarHelper.cs" />
+    <Compile Include="Model\FBUser.cs" />
+    <Compile Include="UC\AddControl.xaml.cs">
+      <DependentUpon>AddControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC\HistoryControl.xaml.cs">
+      <DependentUpon>HistoryControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC\MeControl.xaml.cs">
+      <DependentUpon>MeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC\PublicControl.xaml.cs">
+      <DependentUpon>PublicControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\StartViewModel.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -121,6 +163,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Icon.png" />
+    <Content Include="Assets\Icon\12285582.png" />
+    <Content Include="Assets\Icon\CircleOpacityMask.png" />
+    <Content Include="Assets\Icon\tri.png" />
     <Content Include="Assets\NewStoreLogo.scale-100.png" />
     <Content Include="Assets\NewStoreLogo.scale-125.png" />
     <Content Include="Assets\NewStoreLogo.scale-150.png" />
@@ -175,6 +220,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="UC\AddControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC\HistoryControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC\MeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC\PublicControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -203,8 +264,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interface\" />
-    <Folder Include="Model\" />
-    <Folder Include="UC\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SamplesCommon\SamplesCommon.csproj">
+      <Project>{0b6a4830-d1ff-4018-baa2-7257eb4579fe}</Project>
+      <Name>SamplesCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FaceBattleControl\FaceBattleControl.csproj">
+      <Project>{cfb1ff02-9d11-4f5b-82d9-720369312177}</Project>
+      <Name>FaceBattleControl</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
