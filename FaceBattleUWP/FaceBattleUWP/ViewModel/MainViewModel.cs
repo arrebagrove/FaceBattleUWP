@@ -5,15 +5,10 @@ using FaceBattleUWP.View;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using JP.Utils.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FaceBattleUWP.ViewModel
 {
-    public class MainViewModel:ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
         private FBUser _currentUser;
         public FBUser CurrentUser
@@ -32,14 +27,13 @@ namespace FaceBattleUWP.ViewModel
             }
         }
 
-
         private RelayCommand _logoutCommand;
         public RelayCommand LogoutCommand
         {
             get
             {
                 if (_logoutCommand != null) return _logoutCommand;
-                return _logoutCommand = new RelayCommand(async() =>
+                return _logoutCommand = new RelayCommand(async () =>
                   {
                       DialogService ds = new DialogService(DialogKind.PlainText, "ATTENTION", "Confrim to logout?");
                       ds.OnLeftBtnClick += (s) =>
@@ -55,6 +49,33 @@ namespace FaceBattleUWP.ViewModel
                   });
             }
         }
+
+        private RelayCommand _enterClassicModeCommand;
+        public RelayCommand EnterClassicModeCommand
+        {
+            get
+            {
+                if (_enterClassicModeCommand != null) return _enterClassicModeCommand;
+                return _enterClassicModeCommand = new RelayCommand(() =>
+                  {
+                      NavigationService.NaivgateToPage(typeof(CapturePage));
+                  });
+            }
+        }
+
+        private RelayCommand _enterHulkModeCommand;
+        public RelayCommand EnterHulkModeCommand
+        {
+            get
+            {
+                if (_enterHulkModeCommand != null) return _enterHulkModeCommand;
+                return _enterHulkModeCommand = new RelayCommand(() =>
+                  {
+                      NavigationService.NaivgateToPage(typeof(CapturePage));
+                  });
+            }
+        }
+
 
         public MainViewModel()
         {

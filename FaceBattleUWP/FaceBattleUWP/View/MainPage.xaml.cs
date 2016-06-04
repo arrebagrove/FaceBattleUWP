@@ -246,7 +246,7 @@ namespace FaceBattleUWP.View
         private void UpdateTriPosUsingAnimation()
         {
             var selectedTB = GetSelectedTB();
-            var targetX = selectedTB.TransformToVisual(this).TransformPoint(new Point(0, 0)).X + 
+            var targetX = selectedTB.TransformToVisual(this).TransformPoint(new Point(0, 0)).X +
                 selectedTB.ActualWidth / 2d - 15d;
 
             TriImage.Visibility = Visibility.Visible;
@@ -275,7 +275,7 @@ namespace FaceBattleUWP.View
             _fabVisual.StartAnimation("Offset.y", offsetAnimation);
         }
 
-        private void ToggleAddControlAnimation(bool show,int delayTime=0)
+        private void ToggleAddControlAnimation(bool show, int delayTime = 0)
         {
             var fadeAnimation = _compositor.CreateScalarKeyFrameAnimation();
             fadeAnimation.InsertKeyFrame(1, show ? 1f : 0f);
@@ -344,6 +344,20 @@ namespace FaceBattleUWP.View
             StartColorAnimation((App.Current.Resources["FaceBattleMainColor"] as SolidColorBrush).Color,
                 new Rect(targetOffsetX.X, targetOffsetX.Y, 50d, 50d), new Rect(0, 0, this.ActualWidth, this.ActualHeight));
             ToggleAddControlAnimation(true, 300);
+
+            NavigationService.HistoryOperationsBeyondFrame.Push(() =>
+            {
+                if(((Window.Current.Content as Frame).Content as Page).GetType() != typeof(MainPage))
+                {
+                    return null;
+                }
+                if (AddControl.Visibility == Visibility.Visible && ((Window.Current.Content as Frame).Content as Page).GetType()==typeof(MainPage))
+                {
+                    AddControl_OnClickCancel();
+                    return true;
+                }
+                return false;
+            });
         }
 
         private void AddControl_OnClickCancel()
@@ -351,7 +365,7 @@ namespace FaceBattleUWP.View
             ToggleAddControlAnimation(false, 0);
 
             var disMissAnimation = InitializeBloomDismissAnimation();
-            if(_colorVisual!=null)
+            if (_colorVisual != null)
             {
                 var batch = _compositor.CreateScopedBatch(CompositionBatchTypes.Animation);
                 _colorVisual.StartAnimation("Scale.x", disMissAnimation);

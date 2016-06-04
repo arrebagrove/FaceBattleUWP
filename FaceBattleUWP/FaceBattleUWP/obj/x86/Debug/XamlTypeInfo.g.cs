@@ -156,7 +156,7 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[18];
+            _typeNameTable = new string[31];
             _typeNameTable[0] = "FcaeBattleUWP.ViewModel.ViewModelLocator";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "FaceBattleUWP.UC.AddControl";
@@ -169,14 +169,27 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
             _typeNameTable[9] = "FaceBattleUWP.UC.PublicControl";
             _typeNameTable[10] = "FaceBattleUWP.Common.BindablePage";
             _typeNameTable[11] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[12] = "FaceBattleUWP.View.MainPage";
-            _typeNameTable[13] = "Windows.UI.Color";
-            _typeNameTable[14] = "System.ValueType";
-            _typeNameTable[15] = "Byte";
-            _typeNameTable[16] = "Windows.UI.Text.FontWeight";
-            _typeNameTable[17] = "FaceBattleUWP.View.StartPage";
+            _typeNameTable[12] = "FaceBattleUWP.View.CapturePage";
+            _typeNameTable[13] = "FaceBattleUWP.View.MainPage";
+            _typeNameTable[14] = "Windows.UI.Color";
+            _typeNameTable[15] = "System.ValueType";
+            _typeNameTable[16] = "Byte";
+            _typeNameTable[17] = "Windows.UI.Text.FontWeight";
+            _typeNameTable[18] = "Microsoft.Xaml.Interactivity.Interaction";
+            _typeNameTable[19] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
+            _typeNameTable[20] = "Windows.UI.Xaml.DependencyObjectCollection";
+            _typeNameTable[21] = "Windows.UI.Xaml.DependencyObject";
+            _typeNameTable[22] = "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior";
+            _typeNameTable[23] = "Microsoft.Xaml.Interactivity.Behavior";
+            _typeNameTable[24] = "Microsoft.Xaml.Interactivity.ActionCollection";
+            _typeNameTable[25] = "String";
+            _typeNameTable[26] = "JP.Utils.Framework.InvokeCommandByKeyDown";
+            _typeNameTable[27] = "System.Windows.Input.ICommand";
+            _typeNameTable[28] = "Windows.System.VirtualKey";
+            _typeNameTable[29] = "System.Enum";
+            _typeNameTable[30] = "FaceBattleUWP.View.StartPage";
 
-            _typeTable = new global::System.Type[18];
+            _typeTable = new global::System.Type[31];
             _typeTable[0] = typeof(global::FcaeBattleUWP.ViewModel.ViewModelLocator);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::FaceBattleUWP.UC.AddControl);
@@ -189,12 +202,25 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
             _typeTable[9] = typeof(global::FaceBattleUWP.UC.PublicControl);
             _typeTable[10] = typeof(global::FaceBattleUWP.Common.BindablePage);
             _typeTable[11] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[12] = typeof(global::FaceBattleUWP.View.MainPage);
-            _typeTable[13] = typeof(global::Windows.UI.Color);
-            _typeTable[14] = typeof(global::System.ValueType);
-            _typeTable[15] = typeof(global::System.Byte);
-            _typeTable[16] = typeof(global::Windows.UI.Text.FontWeight);
-            _typeTable[17] = typeof(global::FaceBattleUWP.View.StartPage);
+            _typeTable[12] = typeof(global::FaceBattleUWP.View.CapturePage);
+            _typeTable[13] = typeof(global::FaceBattleUWP.View.MainPage);
+            _typeTable[14] = typeof(global::Windows.UI.Color);
+            _typeTable[15] = typeof(global::System.ValueType);
+            _typeTable[16] = typeof(global::System.Byte);
+            _typeTable[17] = typeof(global::Windows.UI.Text.FontWeight);
+            _typeTable[18] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
+            _typeTable[19] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
+            _typeTable[20] = typeof(global::Windows.UI.Xaml.DependencyObjectCollection);
+            _typeTable[21] = typeof(global::Windows.UI.Xaml.DependencyObject);
+            _typeTable[22] = typeof(global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior);
+            _typeTable[23] = typeof(global::Microsoft.Xaml.Interactivity.Behavior);
+            _typeTable[24] = typeof(global::Microsoft.Xaml.Interactivity.ActionCollection);
+            _typeTable[25] = typeof(global::System.String);
+            _typeTable[26] = typeof(global::JP.Utils.Framework.InvokeCommandByKeyDown);
+            _typeTable[27] = typeof(global::System.Windows.Input.ICommand);
+            _typeTable[28] = typeof(global::Windows.System.VirtualKey);
+            _typeTable[29] = typeof(global::System.Enum);
+            _typeTable[30] = typeof(global::FaceBattleUWP.View.StartPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -237,8 +263,25 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
         private object Activate_8_ObservableObject() { return new global::GalaSoft.MvvmLight.ObservableObject(); }
         private object Activate_9_PublicControl() { return new global::FaceBattleUWP.UC.PublicControl(); }
         private object Activate_10_BindablePage() { return new global::FaceBattleUWP.Common.BindablePage(); }
-        private object Activate_12_MainPage() { return new global::FaceBattleUWP.View.MainPage(); }
-        private object Activate_17_StartPage() { return new global::FaceBattleUWP.View.StartPage(); }
+        private object Activate_12_CapturePage() { return new global::FaceBattleUWP.View.CapturePage(); }
+        private object Activate_13_MainPage() { return new global::FaceBattleUWP.View.MainPage(); }
+        private object Activate_19_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
+        private object Activate_22_EventTriggerBehavior() { return new global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior(); }
+        private object Activate_24_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }
+        private object Activate_26_InvokeCommandByKeyDown() { return new global::JP.Utils.Framework.InvokeCommandByKeyDown(); }
+        private object Activate_30_StartPage() { return new global::FaceBattleUWP.View.StartPage(); }
+        private void VectorAdd_19_BehaviorCollection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
+            var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_24_ActionCollection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
+            var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
+            collection.Add(newItem);
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -323,14 +366,21 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
                 xamlType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 12:   //  FaceBattleUWP.View.MainPage
+            case 12:   //  FaceBattleUWP.View.CapturePage
                 userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("FaceBattleUWP.Common.BindablePage"));
-                userType.Activator = Activate_12_MainPage;
+                userType.Activator = Activate_12_CapturePage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 13:   //  Windows.UI.Color
+            case 13:   //  FaceBattleUWP.View.MainPage
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("FaceBattleUWP.Common.BindablePage"));
+                userType.Activator = Activate_13_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 14:   //  Windows.UI.Color
                 userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.AddMemberName("A");
                 userType.AddMemberName("B");
@@ -339,25 +389,267 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 14:   //  System.ValueType
+            case 15:   //  System.ValueType
                 userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 15:   //  Byte
+            case 16:   //  Byte
                 userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 16:   //  Windows.UI.Text.FontWeight
+            case 17:   //  Windows.UI.Text.FontWeight
                 userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 xamlType = userType;
                 break;
 
-            case 17:   //  FaceBattleUWP.View.StartPage
+            case 18:   //  Microsoft.Xaml.Interactivity.Interaction
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.AddMemberName("Behaviors");
+                xamlType = userType;
+                break;
+
+            case 19:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObjectCollection"));
+                userType.CollectionAdd = VectorAdd_19_BehaviorCollection;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 20:   //  Windows.UI.Xaml.DependencyObjectCollection
+                xamlType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 21:   //  Windows.UI.Xaml.DependencyObject
+                xamlType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 22:   //  Microsoft.Xaml.Interactions.Core.EventTriggerBehavior
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior"));
+                userType.Activator = Activate_22_EventTriggerBehavior;
+                userType.SetContentPropertyName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.Actions");
+                userType.AddMemberName("Actions");
+                userType.AddMemberName("EventName");
+                userType.AddMemberName("SourceObject");
+                xamlType = userType;
+                break;
+
+            case 23:   //  Microsoft.Xaml.Interactivity.Behavior
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
+                userType.AddMemberName("AssociatedObject");
+                xamlType = userType;
+                break;
+
+            case 24:   //  Microsoft.Xaml.Interactivity.ActionCollection
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObjectCollection"));
+                userType.CollectionAdd = VectorAdd_24_ActionCollection;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 25:   //  String
+                xamlType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 26:   //  JP.Utils.Framework.InvokeCommandByKeyDown
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
+                userType.Activator = Activate_26_InvokeCommandByKeyDown;
+                userType.AddMemberName("Command");
+                userType.AddMemberName("PressedKey");
+                xamlType = userType;
+                break;
+
+            case 27:   //  System.Windows.Input.ICommand
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, null);
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 28:   //  Windows.System.VirtualKey
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("None", global::Windows.System.VirtualKey.None);
+                userType.AddEnumValue("LeftButton", global::Windows.System.VirtualKey.LeftButton);
+                userType.AddEnumValue("RightButton", global::Windows.System.VirtualKey.RightButton);
+                userType.AddEnumValue("Cancel", global::Windows.System.VirtualKey.Cancel);
+                userType.AddEnumValue("MiddleButton", global::Windows.System.VirtualKey.MiddleButton);
+                userType.AddEnumValue("XButton1", global::Windows.System.VirtualKey.XButton1);
+                userType.AddEnumValue("XButton2", global::Windows.System.VirtualKey.XButton2);
+                userType.AddEnumValue("Back", global::Windows.System.VirtualKey.Back);
+                userType.AddEnumValue("Tab", global::Windows.System.VirtualKey.Tab);
+                userType.AddEnumValue("Clear", global::Windows.System.VirtualKey.Clear);
+                userType.AddEnumValue("Enter", global::Windows.System.VirtualKey.Enter);
+                userType.AddEnumValue("Shift", global::Windows.System.VirtualKey.Shift);
+                userType.AddEnumValue("Control", global::Windows.System.VirtualKey.Control);
+                userType.AddEnumValue("Menu", global::Windows.System.VirtualKey.Menu);
+                userType.AddEnumValue("Pause", global::Windows.System.VirtualKey.Pause);
+                userType.AddEnumValue("CapitalLock", global::Windows.System.VirtualKey.CapitalLock);
+                userType.AddEnumValue("Kana", global::Windows.System.VirtualKey.Kana);
+                userType.AddEnumValue("Hangul", global::Windows.System.VirtualKey.Hangul);
+                userType.AddEnumValue("Junja", global::Windows.System.VirtualKey.Junja);
+                userType.AddEnumValue("Final", global::Windows.System.VirtualKey.Final);
+                userType.AddEnumValue("Hanja", global::Windows.System.VirtualKey.Hanja);
+                userType.AddEnumValue("Kanji", global::Windows.System.VirtualKey.Kanji);
+                userType.AddEnumValue("Escape", global::Windows.System.VirtualKey.Escape);
+                userType.AddEnumValue("Convert", global::Windows.System.VirtualKey.Convert);
+                userType.AddEnumValue("NonConvert", global::Windows.System.VirtualKey.NonConvert);
+                userType.AddEnumValue("Accept", global::Windows.System.VirtualKey.Accept);
+                userType.AddEnumValue("ModeChange", global::Windows.System.VirtualKey.ModeChange);
+                userType.AddEnumValue("Space", global::Windows.System.VirtualKey.Space);
+                userType.AddEnumValue("PageUp", global::Windows.System.VirtualKey.PageUp);
+                userType.AddEnumValue("PageDown", global::Windows.System.VirtualKey.PageDown);
+                userType.AddEnumValue("End", global::Windows.System.VirtualKey.End);
+                userType.AddEnumValue("Home", global::Windows.System.VirtualKey.Home);
+                userType.AddEnumValue("Left", global::Windows.System.VirtualKey.Left);
+                userType.AddEnumValue("Up", global::Windows.System.VirtualKey.Up);
+                userType.AddEnumValue("Right", global::Windows.System.VirtualKey.Right);
+                userType.AddEnumValue("Down", global::Windows.System.VirtualKey.Down);
+                userType.AddEnumValue("Select", global::Windows.System.VirtualKey.Select);
+                userType.AddEnumValue("Print", global::Windows.System.VirtualKey.Print);
+                userType.AddEnumValue("Execute", global::Windows.System.VirtualKey.Execute);
+                userType.AddEnumValue("Snapshot", global::Windows.System.VirtualKey.Snapshot);
+                userType.AddEnumValue("Insert", global::Windows.System.VirtualKey.Insert);
+                userType.AddEnumValue("Delete", global::Windows.System.VirtualKey.Delete);
+                userType.AddEnumValue("Help", global::Windows.System.VirtualKey.Help);
+                userType.AddEnumValue("Number0", global::Windows.System.VirtualKey.Number0);
+                userType.AddEnumValue("Number1", global::Windows.System.VirtualKey.Number1);
+                userType.AddEnumValue("Number2", global::Windows.System.VirtualKey.Number2);
+                userType.AddEnumValue("Number3", global::Windows.System.VirtualKey.Number3);
+                userType.AddEnumValue("Number4", global::Windows.System.VirtualKey.Number4);
+                userType.AddEnumValue("Number5", global::Windows.System.VirtualKey.Number5);
+                userType.AddEnumValue("Number6", global::Windows.System.VirtualKey.Number6);
+                userType.AddEnumValue("Number7", global::Windows.System.VirtualKey.Number7);
+                userType.AddEnumValue("Number8", global::Windows.System.VirtualKey.Number8);
+                userType.AddEnumValue("Number9", global::Windows.System.VirtualKey.Number9);
+                userType.AddEnumValue("A", global::Windows.System.VirtualKey.A);
+                userType.AddEnumValue("B", global::Windows.System.VirtualKey.B);
+                userType.AddEnumValue("C", global::Windows.System.VirtualKey.C);
+                userType.AddEnumValue("D", global::Windows.System.VirtualKey.D);
+                userType.AddEnumValue("E", global::Windows.System.VirtualKey.E);
+                userType.AddEnumValue("F", global::Windows.System.VirtualKey.F);
+                userType.AddEnumValue("G", global::Windows.System.VirtualKey.G);
+                userType.AddEnumValue("H", global::Windows.System.VirtualKey.H);
+                userType.AddEnumValue("I", global::Windows.System.VirtualKey.I);
+                userType.AddEnumValue("J", global::Windows.System.VirtualKey.J);
+                userType.AddEnumValue("K", global::Windows.System.VirtualKey.K);
+                userType.AddEnumValue("L", global::Windows.System.VirtualKey.L);
+                userType.AddEnumValue("M", global::Windows.System.VirtualKey.M);
+                userType.AddEnumValue("N", global::Windows.System.VirtualKey.N);
+                userType.AddEnumValue("O", global::Windows.System.VirtualKey.O);
+                userType.AddEnumValue("P", global::Windows.System.VirtualKey.P);
+                userType.AddEnumValue("Q", global::Windows.System.VirtualKey.Q);
+                userType.AddEnumValue("R", global::Windows.System.VirtualKey.R);
+                userType.AddEnumValue("S", global::Windows.System.VirtualKey.S);
+                userType.AddEnumValue("T", global::Windows.System.VirtualKey.T);
+                userType.AddEnumValue("U", global::Windows.System.VirtualKey.U);
+                userType.AddEnumValue("V", global::Windows.System.VirtualKey.V);
+                userType.AddEnumValue("W", global::Windows.System.VirtualKey.W);
+                userType.AddEnumValue("X", global::Windows.System.VirtualKey.X);
+                userType.AddEnumValue("Y", global::Windows.System.VirtualKey.Y);
+                userType.AddEnumValue("Z", global::Windows.System.VirtualKey.Z);
+                userType.AddEnumValue("LeftWindows", global::Windows.System.VirtualKey.LeftWindows);
+                userType.AddEnumValue("RightWindows", global::Windows.System.VirtualKey.RightWindows);
+                userType.AddEnumValue("Application", global::Windows.System.VirtualKey.Application);
+                userType.AddEnumValue("Sleep", global::Windows.System.VirtualKey.Sleep);
+                userType.AddEnumValue("NumberPad0", global::Windows.System.VirtualKey.NumberPad0);
+                userType.AddEnumValue("NumberPad1", global::Windows.System.VirtualKey.NumberPad1);
+                userType.AddEnumValue("NumberPad2", global::Windows.System.VirtualKey.NumberPad2);
+                userType.AddEnumValue("NumberPad3", global::Windows.System.VirtualKey.NumberPad3);
+                userType.AddEnumValue("NumberPad4", global::Windows.System.VirtualKey.NumberPad4);
+                userType.AddEnumValue("NumberPad5", global::Windows.System.VirtualKey.NumberPad5);
+                userType.AddEnumValue("NumberPad6", global::Windows.System.VirtualKey.NumberPad6);
+                userType.AddEnumValue("NumberPad7", global::Windows.System.VirtualKey.NumberPad7);
+                userType.AddEnumValue("NumberPad8", global::Windows.System.VirtualKey.NumberPad8);
+                userType.AddEnumValue("NumberPad9", global::Windows.System.VirtualKey.NumberPad9);
+                userType.AddEnumValue("Multiply", global::Windows.System.VirtualKey.Multiply);
+                userType.AddEnumValue("Add", global::Windows.System.VirtualKey.Add);
+                userType.AddEnumValue("Separator", global::Windows.System.VirtualKey.Separator);
+                userType.AddEnumValue("Subtract", global::Windows.System.VirtualKey.Subtract);
+                userType.AddEnumValue("Decimal", global::Windows.System.VirtualKey.Decimal);
+                userType.AddEnumValue("Divide", global::Windows.System.VirtualKey.Divide);
+                userType.AddEnumValue("F1", global::Windows.System.VirtualKey.F1);
+                userType.AddEnumValue("F2", global::Windows.System.VirtualKey.F2);
+                userType.AddEnumValue("F3", global::Windows.System.VirtualKey.F3);
+                userType.AddEnumValue("F4", global::Windows.System.VirtualKey.F4);
+                userType.AddEnumValue("F5", global::Windows.System.VirtualKey.F5);
+                userType.AddEnumValue("F6", global::Windows.System.VirtualKey.F6);
+                userType.AddEnumValue("F7", global::Windows.System.VirtualKey.F7);
+                userType.AddEnumValue("F8", global::Windows.System.VirtualKey.F8);
+                userType.AddEnumValue("F9", global::Windows.System.VirtualKey.F9);
+                userType.AddEnumValue("F10", global::Windows.System.VirtualKey.F10);
+                userType.AddEnumValue("F11", global::Windows.System.VirtualKey.F11);
+                userType.AddEnumValue("F12", global::Windows.System.VirtualKey.F12);
+                userType.AddEnumValue("F13", global::Windows.System.VirtualKey.F13);
+                userType.AddEnumValue("F14", global::Windows.System.VirtualKey.F14);
+                userType.AddEnumValue("F15", global::Windows.System.VirtualKey.F15);
+                userType.AddEnumValue("F16", global::Windows.System.VirtualKey.F16);
+                userType.AddEnumValue("F17", global::Windows.System.VirtualKey.F17);
+                userType.AddEnumValue("F18", global::Windows.System.VirtualKey.F18);
+                userType.AddEnumValue("F19", global::Windows.System.VirtualKey.F19);
+                userType.AddEnumValue("F20", global::Windows.System.VirtualKey.F20);
+                userType.AddEnumValue("F21", global::Windows.System.VirtualKey.F21);
+                userType.AddEnumValue("F22", global::Windows.System.VirtualKey.F22);
+                userType.AddEnumValue("F23", global::Windows.System.VirtualKey.F23);
+                userType.AddEnumValue("F24", global::Windows.System.VirtualKey.F24);
+                userType.AddEnumValue("NavigationView", global::Windows.System.VirtualKey.NavigationView);
+                userType.AddEnumValue("NavigationMenu", global::Windows.System.VirtualKey.NavigationMenu);
+                userType.AddEnumValue("NavigationUp", global::Windows.System.VirtualKey.NavigationUp);
+                userType.AddEnumValue("NavigationDown", global::Windows.System.VirtualKey.NavigationDown);
+                userType.AddEnumValue("NavigationLeft", global::Windows.System.VirtualKey.NavigationLeft);
+                userType.AddEnumValue("NavigationRight", global::Windows.System.VirtualKey.NavigationRight);
+                userType.AddEnumValue("NavigationAccept", global::Windows.System.VirtualKey.NavigationAccept);
+                userType.AddEnumValue("NavigationCancel", global::Windows.System.VirtualKey.NavigationCancel);
+                userType.AddEnumValue("NumberKeyLock", global::Windows.System.VirtualKey.NumberKeyLock);
+                userType.AddEnumValue("Scroll", global::Windows.System.VirtualKey.Scroll);
+                userType.AddEnumValue("LeftShift", global::Windows.System.VirtualKey.LeftShift);
+                userType.AddEnumValue("RightShift", global::Windows.System.VirtualKey.RightShift);
+                userType.AddEnumValue("LeftControl", global::Windows.System.VirtualKey.LeftControl);
+                userType.AddEnumValue("RightControl", global::Windows.System.VirtualKey.RightControl);
+                userType.AddEnumValue("LeftMenu", global::Windows.System.VirtualKey.LeftMenu);
+                userType.AddEnumValue("RightMenu", global::Windows.System.VirtualKey.RightMenu);
+                userType.AddEnumValue("GoBack", global::Windows.System.VirtualKey.GoBack);
+                userType.AddEnumValue("GoForward", global::Windows.System.VirtualKey.GoForward);
+                userType.AddEnumValue("Refresh", global::Windows.System.VirtualKey.Refresh);
+                userType.AddEnumValue("Stop", global::Windows.System.VirtualKey.Stop);
+                userType.AddEnumValue("Search", global::Windows.System.VirtualKey.Search);
+                userType.AddEnumValue("Favorites", global::Windows.System.VirtualKey.Favorites);
+                userType.AddEnumValue("GoHome", global::Windows.System.VirtualKey.GoHome);
+                userType.AddEnumValue("GamepadA", global::Windows.System.VirtualKey.GamepadA);
+                userType.AddEnumValue("GamepadB", global::Windows.System.VirtualKey.GamepadB);
+                userType.AddEnumValue("GamepadX", global::Windows.System.VirtualKey.GamepadX);
+                userType.AddEnumValue("GamepadY", global::Windows.System.VirtualKey.GamepadY);
+                userType.AddEnumValue("GamepadRightShoulder", global::Windows.System.VirtualKey.GamepadRightShoulder);
+                userType.AddEnumValue("GamepadLeftShoulder", global::Windows.System.VirtualKey.GamepadLeftShoulder);
+                userType.AddEnumValue("GamepadLeftTrigger", global::Windows.System.VirtualKey.GamepadLeftTrigger);
+                userType.AddEnumValue("GamepadRightTrigger", global::Windows.System.VirtualKey.GamepadRightTrigger);
+                userType.AddEnumValue("GamepadDPadUp", global::Windows.System.VirtualKey.GamepadDPadUp);
+                userType.AddEnumValue("GamepadDPadDown", global::Windows.System.VirtualKey.GamepadDPadDown);
+                userType.AddEnumValue("GamepadDPadLeft", global::Windows.System.VirtualKey.GamepadDPadLeft);
+                userType.AddEnumValue("GamepadDPadRight", global::Windows.System.VirtualKey.GamepadDPadRight);
+                userType.AddEnumValue("GamepadMenu", global::Windows.System.VirtualKey.GamepadMenu);
+                userType.AddEnumValue("GamepadView", global::Windows.System.VirtualKey.GamepadView);
+                userType.AddEnumValue("GamepadLeftThumbstickButton", global::Windows.System.VirtualKey.GamepadLeftThumbstickButton);
+                userType.AddEnumValue("GamepadRightThumbstickButton", global::Windows.System.VirtualKey.GamepadRightThumbstickButton);
+                userType.AddEnumValue("GamepadLeftThumbstickUp", global::Windows.System.VirtualKey.GamepadLeftThumbstickUp);
+                userType.AddEnumValue("GamepadLeftThumbstickDown", global::Windows.System.VirtualKey.GamepadLeftThumbstickDown);
+                userType.AddEnumValue("GamepadLeftThumbstickRight", global::Windows.System.VirtualKey.GamepadLeftThumbstickRight);
+                userType.AddEnumValue("GamepadLeftThumbstickLeft", global::Windows.System.VirtualKey.GamepadLeftThumbstickLeft);
+                userType.AddEnumValue("GamepadRightThumbstickUp", global::Windows.System.VirtualKey.GamepadRightThumbstickUp);
+                userType.AddEnumValue("GamepadRightThumbstickDown", global::Windows.System.VirtualKey.GamepadRightThumbstickDown);
+                userType.AddEnumValue("GamepadRightThumbstickRight", global::Windows.System.VirtualKey.GamepadRightThumbstickRight);
+                userType.AddEnumValue("GamepadRightThumbstickLeft", global::Windows.System.VirtualKey.GamepadRightThumbstickLeft);
+                xamlType = userType;
+                break;
+
+            case 29:   //  System.Enum
+                userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                xamlType = userType;
+                break;
+
+            case 30:   //  FaceBattleUWP.View.StartPage
                 userType = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("FaceBattleUWP.Common.BindablePage"));
-                userType.Activator = Activate_17_StartPage;
+                userType.Activator = Activate_30_StartPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -469,6 +761,64 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
             var that = (global::Windows.UI.Color)instance;
             that.R = (global::System.Byte)Value;
         }
+        private object get_5_Interaction_Behaviors(object instance)
+        {
+            return global::Microsoft.Xaml.Interactivity.Interaction.GetBehaviors((global::Windows.UI.Xaml.DependencyObject)instance);
+        }
+        private void set_5_Interaction_Behaviors(object instance, object Value)
+        {
+            global::Microsoft.Xaml.Interactivity.Interaction.SetBehaviors((global::Windows.UI.Xaml.DependencyObject)instance, (global::Microsoft.Xaml.Interactivity.BehaviorCollection)Value);
+        }
+        private object get_6_EventTriggerBehavior_Actions(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
+            return that.Actions;
+        }
+        private object get_7_EventTriggerBehavior_EventName(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
+            return that.EventName;
+        }
+        private void set_7_EventTriggerBehavior_EventName(object instance, object Value)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
+            that.EventName = (global::System.String)Value;
+        }
+        private object get_8_EventTriggerBehavior_SourceObject(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
+            return that.SourceObject;
+        }
+        private void set_8_EventTriggerBehavior_SourceObject(object instance, object Value)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
+            that.SourceObject = (global::System.Object)Value;
+        }
+        private object get_9_Behavior_AssociatedObject(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactivity.Behavior)instance;
+            return that.AssociatedObject;
+        }
+        private object get_10_InvokeCommandByKeyDown_Command(object instance)
+        {
+            var that = (global::JP.Utils.Framework.InvokeCommandByKeyDown)instance;
+            return that.Command;
+        }
+        private void set_10_InvokeCommandByKeyDown_Command(object instance, object Value)
+        {
+            var that = (global::JP.Utils.Framework.InvokeCommandByKeyDown)instance;
+            that.Command = (global::System.Windows.Input.ICommand)Value;
+        }
+        private object get_11_InvokeCommandByKeyDown_PressedKey(object instance)
+        {
+            var that = (global::JP.Utils.Framework.InvokeCommandByKeyDown)instance;
+            return that.PressedKey;
+        }
+        private void set_11_InvokeCommandByKeyDown_PressedKey(object instance, object Value)
+        {
+            var that = (global::JP.Utils.Framework.InvokeCommandByKeyDown)instance;
+            that.PressedKey = (global::Windows.System.VirtualKey)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -506,6 +856,55 @@ namespace FaceBattleUWP.FaceBattleUWP_XamlTypeInfo
                 xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "R", "Byte");
                 xamlMember.Getter = get_4_Color_R;
                 xamlMember.Setter = set_4_Color_R;
+                break;
+            case "Microsoft.Xaml.Interactivity.Interaction.Behaviors":
+                userType = (global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactivity.Interaction");
+                xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "Behaviors", "Microsoft.Xaml.Interactivity.BehaviorCollection");
+                xamlMember.SetTargetTypeName("Windows.UI.Xaml.DependencyObject");
+                xamlMember.SetIsAttachable();
+                xamlMember.Getter = get_5_Interaction_Behaviors;
+                xamlMember.Setter = set_5_Interaction_Behaviors;
+                break;
+            case "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.Actions":
+                userType = (global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior");
+                xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "Actions", "Microsoft.Xaml.Interactivity.ActionCollection");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_6_EventTriggerBehavior_Actions;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.EventName":
+                userType = (global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior");
+                xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "EventName", "String");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_7_EventTriggerBehavior_EventName;
+                xamlMember.Setter = set_7_EventTriggerBehavior_EventName;
+                break;
+            case "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.SourceObject":
+                userType = (global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior");
+                xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "SourceObject", "Object");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_8_EventTriggerBehavior_SourceObject;
+                xamlMember.Setter = set_8_EventTriggerBehavior_SourceObject;
+                break;
+            case "Microsoft.Xaml.Interactivity.Behavior.AssociatedObject":
+                userType = (global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior");
+                xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "AssociatedObject", "Windows.UI.Xaml.DependencyObject");
+                xamlMember.Getter = get_9_Behavior_AssociatedObject;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "JP.Utils.Framework.InvokeCommandByKeyDown.Command":
+                userType = (global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("JP.Utils.Framework.InvokeCommandByKeyDown");
+                xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "Command", "System.Windows.Input.ICommand");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_10_InvokeCommandByKeyDown_Command;
+                xamlMember.Setter = set_10_InvokeCommandByKeyDown_Command;
+                break;
+            case "JP.Utils.Framework.InvokeCommandByKeyDown.PressedKey":
+                userType = (global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("JP.Utils.Framework.InvokeCommandByKeyDown");
+                xamlMember = new global::FaceBattleUWP.FaceBattleUWP_XamlTypeInfo.XamlMember(this, "PressedKey", "Windows.System.VirtualKey");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_11_InvokeCommandByKeyDown_PressedKey;
+                xamlMember.Setter = set_11_InvokeCommandByKeyDown_PressedKey;
                 break;
             }
             return xamlMember;

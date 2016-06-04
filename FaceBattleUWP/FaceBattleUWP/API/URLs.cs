@@ -8,7 +8,7 @@ namespace FaceBattleUWP.API
 {
     public static class URLs
     {
-        private static string DOMAIN => "https://1percent.faith/facebattle";
+        private static string DOMAIN => "http://1percent.faith/facebattle";
 
         public static string LOGIN => $"{DOMAIN}/user/login";
 

@@ -34,7 +34,7 @@ namespace FaceBattleUWP
 
         private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            ToastService.SendToast(e.Message);
+            //ToastService.SendToast(e.Message);
             e.Handled = true;
         }
 

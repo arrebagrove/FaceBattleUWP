@@ -18,7 +18,7 @@ namespace FaceBattleUWP.Common
             }
         }
 
-        public static Stack<Func<bool>> HistoryOperationsBeyondFrame = new Stack<Func<bool>>();
+        public static Stack<Func<bool?>> HistoryOperationsBeyondFrame = new Stack<Func<bool?>>();
 
         public static void NaivgateToPage(Type pagetype, object param = null)
         {
@@ -30,7 +30,13 @@ namespace FaceBattleUWP.Common
             try
             {
                 var op = HistoryOperationsBeyondFrame.Pop();
-                if (!op.Invoke())
+                var result = op.Invoke();
+                if(result == null)
+                {
+                    HistoryOperationsBeyondFrame.Push(op);
+                    throw new InvalidOperationException();
+                }
+                else if (!result.Value)
                 {
                     throw new InvalidOperationException();
                 }
