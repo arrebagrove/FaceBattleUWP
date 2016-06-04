@@ -1,15 +1,17 @@
 ﻿using FaceBattleControl;
 using FaceBattleUWP.API;
 using FaceBattleUWP.Common;
+using FaceBattleUWP.View;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using JP.Utils.Data;
+using JP.Utils.Data.Json;
 using JP.Utils.Framework;
 using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.Storage;
+using Windows.Data.Json;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Imaging;
 
@@ -61,7 +63,7 @@ namespace FaceBattleUWP.ViewModel
                   {
                       ShowLoading = Visibility.Visible;
                       ShowConfirmGrid = false;
-                      _cts = new CancellationTokenSource(20000);
+                      _cts = new CancellationTokenSource(200000);
                       try
                       {
                           await UploadImageAsync();
@@ -71,6 +73,11 @@ namespace FaceBattleUWP.ViewModel
                           ShowLoading = Visibility.Collapsed;
                           ShowConfirmGrid = true;
                           ToastService.SendToast("Request timeout.");
+                      }
+                      catch (InvalidDataException)
+                      {
+                          ShowLoading = Visibility.Collapsed;
+                          ShowConfirmGrid = true;
                       }
                       catch (Exception e)
                       {
@@ -157,6 +164,19 @@ namespace FaceBattleUWP.ViewModel
                 var result = await CloudService.UploadImageAsync(LocalSettingHelper.GetValue("uid"),
                     byteArray, _data.Type.ToString(), _cts.Token);
                 var content = await result.Content.ReadAsStringAsync();
+                var jsonObj = JsonObject.Parse(content);
+                var code = JsonParser.GetNumberFromJsonObj(jsonObj, "code");
+                var msg = JsonParser.GetStringFromJsonObj(jsonObj, "msg");
+                if (code != 200)
+                {
+                    ToastService.SendToast(msg);
+                    throw new InvalidDataException();
+                }
+                else
+                {
+                    ToastService.SendToast("Upload successfully.");
+                    NavigationService.NaivgateToPage(typeof(MainPage));
+                }
             }
         }
 
@@ -175,7 +195,7 @@ namespace FaceBattleUWP.ViewModel
         {
             if (param is UploadStruct)
             {
-                var data = param as UploadStruct;
+                _data = param as UploadStruct;
                 await DisplayImage();
             }
         }

@@ -11,6 +11,7 @@ using Windows.UI;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
@@ -19,6 +20,31 @@ namespace FaceBattleUWP.View
 {
     public sealed partial class MainPage : BindablePage
     {
+
+
+        public bool ShowAddControl
+        {
+            get { return (bool)GetValue(ShowAddControlProperty); }
+            set { SetValue(ShowAddControlProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShowAddControlProperty =
+            DependencyProperty.Register("ShowAddControl", typeof(bool), typeof(MainPage),
+                new PropertyMetadata(false, OnShowAddControlPropertyChanged));
+
+        private static void OnShowAddControlPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var page = d as MainPage;
+            if ((bool)e.NewValue)
+            {
+                page.ShowNewControl();
+            }
+            else
+            {
+                page.HideNewControl();
+            }
+        }
+
         private Compositor _compositor;
         private Visual _triImageVisual;
         private Visual _newGridVisual;
@@ -42,7 +68,19 @@ namespace FaceBattleUWP.View
                 this.InitComposition();
                 this.Loaded += MainPage_Loaded;
                 this.SizeChanged += MainPage_SizeChanged;
+                this.InitBinding();
             }
+        }
+
+        private void InitBinding()
+        {
+            var b = new Binding()
+            {
+                Source = MainVM,
+                Path = new PropertyPath("ShowAddControl"),
+                Mode = BindingMode.TwoWay
+            };
+            this.SetBinding(ShowAddControlProperty, b);
         }
 
         private void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -276,6 +314,8 @@ namespace FaceBattleUWP.View
 
         private void ToggleAddControlAnimation(bool show, int delayTime = 0)
         {
+            AddControl.Visibility = Visibility.Visible;
+
             var fadeAnimation = _compositor.CreateScalarKeyFrameAnimation();
             fadeAnimation.InsertKeyFrame(1, show ? 1f : 0f);
             fadeAnimation.Duration = TimeSpan.FromMilliseconds(300);
@@ -286,8 +326,17 @@ namespace FaceBattleUWP.View
             offsetAnimation.Duration = TimeSpan.FromMilliseconds(300);
             offsetAnimation.DelayTime = TimeSpan.FromMilliseconds(delayTime);
 
+            var batch = _compositor.CreateScopedBatch(CompositionBatchTypes.Animation);
             _addControlVisual.StartAnimation("Opacity", fadeAnimation);
             _addControlVisual.StartAnimation("Offset.y", offsetAnimation);
+            batch.Completed += (sender, e) =>
+              {
+                  if (!show)
+                  {
+                      AddControl.Visibility = Visibility.Collapsed;
+                  }
+              };
+            batch.End();
         }
 
         private void MainPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -337,29 +386,38 @@ namespace FaceBattleUWP.View
 
         private void AddNewFABBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddControl.Visibility = Visibility.Visible;
+            ShowAddControl = true;
+        }
 
+        private void AddControl_OnClickCancel()
+        {
+            ShowAddControl = false;
+        }
+
+        private void ShowNewControl()
+        {
             var targetOffsetX = AddNewFABBtn.TransformToVisual(this).TransformPoint(new Point(0, 0));
             StartColorAnimation((App.Current.Resources["FaceBattleMainColor"] as SolidColorBrush).Color,
                 new Rect(targetOffsetX.X, targetOffsetX.Y, 50d, 50d), new Rect(0, 0, this.ActualWidth, this.ActualHeight));
+
             ToggleAddControlAnimation(true, 300);
 
             NavigationService.HistoryOperationsBeyondFrame.Push(() =>
             {
-                if(((Window.Current.Content as Frame).Content as Page).GetType() != typeof(MainPage))
+                if (((Window.Current.Content as Frame).Content as Page).GetType() != typeof(MainPage))
                 {
                     return null;
                 }
-                if (AddControl.Visibility == Visibility.Visible && ((Window.Current.Content as Frame).Content as Page).GetType()==typeof(MainPage))
+                if (AddControl.Visibility == Visibility.Visible && ((Window.Current.Content as Frame).Content as Page).GetType() == typeof(MainPage))
                 {
-                    AddControl_OnClickCancel();
+                    ShowAddControl = false;
                     return true;
                 }
                 return false;
             });
         }
 
-        private void AddControl_OnClickCancel()
+        private void HideNewControl()
         {
             ToggleAddControlAnimation(false, 0);
 
@@ -372,7 +430,6 @@ namespace FaceBattleUWP.View
                 batch.Completed += (sender, e) =>
                 {
                     _containerForVisuals.Children.RemoveAll();
-                    AddControl.Visibility = Visibility.Collapsed;
                 };
                 batch.End();
             }

@@ -12,6 +12,23 @@ namespace FaceBattleUWP.ViewModel
 {
     public class MainViewModel : ViewModelBase,INavigable
     {
+        private bool _showAddControl;
+        public bool ShowAddControl
+        {
+            get
+            {
+                return _showAddControl;
+            }
+            set
+            {
+                if (_showAddControl != value)
+                {
+                    _showAddControl = value;
+                    RaisePropertyChanged(() => ShowAddControl);
+                }
+            }
+        }
+
         private FBUser _currentUser;
         public FBUser CurrentUser
         {
@@ -60,6 +77,7 @@ namespace FaceBattleUWP.ViewModel
                 if (_enterClassicModeCommand != null) return _enterClassicModeCommand;
                 return _enterClassicModeCommand = new RelayCommand(() =>
                   {
+                      ShowAddControl = false;
                       NavigationService.NaivgateToPage(typeof(CapturePage));
                   });
             }
@@ -73,6 +91,7 @@ namespace FaceBattleUWP.ViewModel
                 if (_enterHulkModeCommand != null) return _enterHulkModeCommand;
                 return _enterHulkModeCommand = new RelayCommand(() =>
                   {
+                      ShowAddControl = false;
                       NavigationService.NaivgateToPage(typeof(CapturePage));
                   });
             }
@@ -103,7 +122,13 @@ namespace FaceBattleUWP.ViewModel
 
         public void Activate(object param)
         {
-            
+            if(param is bool)
+            {
+                if((bool)param)
+                {
+                    InitUser();
+                }
+            }
         }
 
         public void Deactivate(object param)

@@ -12,7 +12,8 @@
     mc:Ignorable="d" Background="{StaticResource FaceBattleMainColor}">
     <Interactivity:Interaction.Behaviors>
         <Core:EventTriggerBehavior EventName="GlobalPageKeyDown">
-            <attach:InvokeCommandByKeyDown Command="{x:Bind StartVM.NextCommand}" PressedKey="F5" />
+            <attach:InvokeCommandByKeyDown Command="{x:Bind StartVM.NextCommand,Mode=OneWay}" 
+                                           PressedKey="Enter" />
         </Core:EventTriggerBehavior>
     </Interactivity:Interaction.Behaviors>
     <Grid Background="{StaticResource FaceBattleMainColor}">

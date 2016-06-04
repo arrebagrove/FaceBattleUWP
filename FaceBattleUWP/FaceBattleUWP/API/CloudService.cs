@@ -15,16 +15,18 @@ namespace FaceBattleUWP.API
 {
     public static class CloudService
     {
-        private static async Task<string> MakeAuthCode()
+        private static async Task<string> MakeAuthToken()
         {
             var uid = LocalSettingHelper.GetValue("uid");
             var userName = LocalSettingHelper.GetValue("username");
             var authCode = LocalSettingHelper.GetValue("authcode");
 
-            var time = await GetServerTimeStampAsync(CTSFactory.MakeCTS().Token);
+            var timeResult = await GetServerTimeStampAsync(CTSFactory.MakeCTS().Token);
+            var time = timeResult.JsonSrc;
+
             var md5 = MD5.GetMd5String(uid + authCode + time);
-            var code = md5.Substring(9, 16) + time;
-            return code;
+            var token = md5.Substring(8, 16) + time;
+            return token;
         }
 
         public static async Task<CommonRespMsg> GetServerTimeStampAsync(CancellationToken token)
@@ -59,16 +61,14 @@ namespace FaceBattleUWP.API
             request.Method = HttpMethod.Post;
 
             var data = new MultipartFormDataContent();
-            var keyValue = new List<KeyValuePair<string, string>>();
-            keyValue.Add(new KeyValuePair<string, string>("uid", uid));
-            keyValue.Add(new KeyValuePair<string, string>("type", type));
-            keyValue.Add(new KeyValuePair<string, string>("token", await MakeAuthCode()));
-            data.Add(new FormUrlEncodedContent(keyValue));
-            data.Add(new ByteArrayContent(photoBytes));
+            data.Add(new StringContent(uid), "uid");
+            data.Add(new StringContent(type), "type");
+            data.Add(new StringContent(await MakeAuthToken()), "token");
+            data.Add(new ByteArrayContent(photoBytes), "photo","photo.jpg");
 
             request.Content = data;
 
-            return await client.SendAsync(request, token);
+            return await client.SendAsync(request, token);  
         }
 
         public static void CheckAPIResult(this CommonRespMsg result)

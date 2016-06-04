@@ -260,7 +260,7 @@ namespace FaceBattleUWP.ViewModel
 
         private async Task LoginAsync()
         {
-            var result = await CloudService.LoginAsync(UserName, Password, CTSFactory.MakeCTS(5000).Token);
+            var result = await CloudService.LoginAsync(UserName, Password, CTSFactory.MakeCTS().Token);
             result.CheckAPIResult();
             if (result.ErrorCode != 200)
             {
@@ -279,13 +279,13 @@ namespace FaceBattleUWP.ViewModel
                 LocalSettingHelper.AddValue("username", userName);
                 LocalSettingHelper.AddValue("authcode", authCode);
 
-                NavigationService.NaivgateToPage(typeof(MainPage));
+                NavigationService.NaivgateToPage(typeof(MainPage),true);
             }
         }
 
         private async Task RegisterAsync()
         {
-            var result = await CloudService.RegisterAsync(UserName, Password, CTSFactory.MakeCTS(5000).Token);
+            var result = await CloudService.RegisterAsync(UserName, Password, CTSFactory.MakeCTS().Token);
             result.CheckAPIResult();
             if (result.ErrorCode != 200)
             {
@@ -294,7 +294,17 @@ namespace FaceBattleUWP.ViewModel
             }
             else
             {
-                NavigationService.NaivgateToPage(typeof(MainPage));
+                var jsonObj = JsonObject.Parse(result.JsonSrc);
+                var dataObj = JsonParser.GetJsonObjFromJsonObj(jsonObj, "data");
+                var uid = JsonParser.GetStringFromJsonObj(dataObj, "uid");
+                var userName = JsonParser.GetStringFromJsonObj(dataObj, "username");
+                var authCode = JsonParser.GetStringFromJsonObj(dataObj, "authcode");
+
+                LocalSettingHelper.AddValue("uid", uid);
+                LocalSettingHelper.AddValue("username", userName);
+                LocalSettingHelper.AddValue("authcode", authCode);
+
+                NavigationService.NaivgateToPage(typeof(MainPage),true);
             }
         }
     }

@@ -19,7 +19,7 @@ namespace FaceBattleUWP.Common
 
         public BindablePage()
         {
-            if(!DesignMode.DesignModeEnabled)
+            if (!DesignMode.DesignModeEnabled)
             {
                 SetUpPageAnimation();
                 SetUpNavigationCache();
@@ -30,7 +30,7 @@ namespace FaceBattleUWP.Common
 
         private void BindablePage_Loaded(object sender, RoutedEventArgs e)
         {
-            if(this.DataContext is INavigable)
+            if (this.DataContext is INavigable)
             {
                 (this.DataContext as INavigable).OnLoaded();
             }
@@ -65,7 +65,7 @@ namespace FaceBattleUWP.Common
 
         protected virtual void SetUpStatusBar()
         {
-            if(APIInfoHelper.HasStatusBar)
+            if (APIInfoHelper.HasStatusBar)
             {
                 StatusBarHelper.SetUpStatusBar();
             }
@@ -78,7 +78,7 @@ namespace FaceBattleUWP.Common
 
         protected virtual void SetNavigationBackBtn()
         {
-            if(this.Frame.CanGoBack)
+            if (this.Frame.CanGoBack)
             {
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             }
@@ -92,7 +92,7 @@ namespace FaceBattleUWP.Common
         /// <param name="args"></param>
         private void CoreWindow_KeyDown(CoreWindow sender, KeyEventArgs args)
         {
-            GlobalPageKeyDown(sender, args);
+            GlobalPageKeyDown?.Invoke(sender, args);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -112,11 +112,7 @@ namespace FaceBattleUWP.Common
             SetUpStatusBar();
             SetupTitleBar();
 
-            //resolve global keydown
-            if (GlobalPageKeyDown != null)
-            {
-                Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
-            }
+            Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -131,11 +127,7 @@ namespace FaceBattleUWP.Common
                 }
             }
 
-            //resolve global keydown
-            if (GlobalPageKeyDown != null)
-            {
-                Window.Current.CoreWindow.KeyDown -= CoreWindow_KeyDown;
-            }
+            Window.Current.CoreWindow.KeyDown -= CoreWindow_KeyDown;
         }
     }
 }
