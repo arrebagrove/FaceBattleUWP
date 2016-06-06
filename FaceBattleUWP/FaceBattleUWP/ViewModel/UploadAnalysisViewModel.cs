@@ -1,6 +1,7 @@
 ﻿using FaceBattleControl;
 using FaceBattleUWP.API;
 using FaceBattleUWP.Common;
+using FaceBattleUWP.Model;
 using FaceBattleUWP.View;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -13,12 +14,47 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Data.Json;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
 namespace FaceBattleUWP.ViewModel
 {
     public class UploadAnalysisViewModel : ViewModelBase, INavigable
     {
+        private bool _showResult;
+        public bool ShowResult
+        {
+            get
+            {
+                return _showResult;
+            }
+            set
+            {
+                if (_showResult != value)
+                {
+                    _showResult = value;
+                    RaisePropertyChanged(() => ShowResult);
+                }
+            }
+        }
+
+        private BattleResult _currentResult;
+        public BattleResult CurrentResult
+        {
+            get
+            {
+                return _currentResult;
+            }
+            set
+            {
+                if (_currentResult != value)
+                {
+                    _currentResult = value;
+                    RaisePropertyChanged(() => CurrentResult);
+                }
+            }
+        }
+
         private BitmapImage _imageBitmap;
         public BitmapImage ImageBitmap
         {
@@ -84,6 +120,7 @@ namespace FaceBattleUWP.ViewModel
                           ShowLoading = Visibility.Collapsed;
                           ShowConfirmGrid = true;
                           ToastService.SendToast(e.Message);
+                          ShowResult = true;
                       }
                   });
             }
@@ -152,6 +189,7 @@ namespace FaceBattleUWP.ViewModel
         public UploadAnalysisViewModel()
         {
             ShowLoading = Visibility.Collapsed;
+            CurrentResult = new BattleResult();
         }
 
         private async Task UploadImageAsync()
@@ -161,22 +199,47 @@ namespace FaceBattleUWP.ViewModel
             {
                 fs.AsStream().CopyTo(memStream);
                 var byteArray = memStream.ToArray();
-                var result = await CloudService.UploadImageAsync(LocalSettingHelper.GetValue("uid"),
-                    byteArray, _data.Type.ToString(), _cts.Token);
-                var content = await result.Content.ReadAsStringAsync();
-                var jsonObj = JsonObject.Parse(content);
-                var code = JsonParser.GetNumberFromJsonObj(jsonObj, "code");
-                var msg = JsonParser.GetStringFromJsonObj(jsonObj, "msg");
-                if (code != 200)
+
+                if(!_data.InBattle)
                 {
-                    ToastService.SendToast(msg);
-                    throw new InvalidDataException();
+                    var result = await CloudService.UploadImageAsync(LocalSettingHelper.GetValue("uid"),
+                    byteArray, _data.Type.ToString(), _cts.Token);
+
+                    var content = await result.Content.ReadAsStringAsync();
+                    var jsonObj = JsonObject.Parse(content);
+                    var code = JsonParser.GetNumberFromJsonObj(jsonObj, "code");
+                    var msg = JsonParser.GetStringFromJsonObj(jsonObj, "msg");
+                    if (code != 200)
+                    {
+                        ToastService.SendToast(msg);
+                        throw new InvalidDataException();
+                    }
+                    else
+                    {
+                        var data = JsonParser.GetJsonObjFromJsonObj(jsonObj, "data");
+                        var bid = JsonParser.GetStringFromJsonObj(data, "bid");
+
+                        ToastService.SendToast("Upload successfully.");
+                        ShowLoading = Visibility.Collapsed;
+                        if (!_data.InBattle)
+                        {
+                            NavigationService.NaivgateToPage(typeof(MainPage));
+                        }
+                        else
+                        {
+                            NavigationService.NaivgateToPage(typeof(BattleDetailPage), bid);
+                        }
+                    }
                 }
                 else
                 {
-                    ToastService.SendToast("Upload successfully.");
-                    NavigationService.NaivgateToPage(typeof(MainPage));
+                    var result = await CloudService.JoinAsync(LocalSettingHelper.GetValue("uid"),_data.Bid.ToString(),
+                        byteArray, _cts.Token);
+
+                    var content = await result.Content.ReadAsStringAsync();
+                    NavigationService.NaivgateToPage(typeof(BattleDetailPage), _data.Bid);
                 }
+                
             }
         }
 

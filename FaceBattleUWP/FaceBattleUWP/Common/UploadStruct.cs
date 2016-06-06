@@ -12,5 +12,9 @@ namespace FaceBattleUWP.Common
         public StorageFile File { get; set; }
 
         public int Type { get; set; }
+
+        public bool InBattle { get; set; }
+
+        public int Bid { get; set; } = -1;
     }
 }

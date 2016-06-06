@@ -14,7 +14,7 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1" Background="{StaticResource FaceBattleBlackColor}">
+        <Grid d:IsHidden="True" Grid.Row="1" Background="Black">
             <Grid x:Name="ConfirmGrid">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="UPLOAD AND ANALYSE THIS PHOTO?" HorizontalAlignment="Center" Foreground="White" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
@@ -31,7 +31,25 @@
                 </StackPanel>
             </Grid>
         </Grid>
-        <Image x:Name="DisplayImage" Source="{x:Bind UploadAnalysisVM.ImageBitmap,Mode=OneWay}"/>
+        <Image x:Name="DisplayImage" MaxWidth="600" Source="{x:Bind UploadAnalysisVM.ImageBitmap,Mode=OneWay}" Stretch="UniformToFill" Margin="0,20,0,0"/>
+        <Grid x:Name="ResultGrid" MaxWidth="600" Grid.Row="1" Margin="0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+            <Grid.RenderTransform>
+                <CompositeTransform TranslateY="-50"/>
+            </Grid.RenderTransform>
+            <Border Background="{x:Bind UploadAnalysisVM.CurrentResult.ResultColor,Mode=OneWay}"/>
+            <StackPanel Margin="10,30">
+                <TextBlock Text="You are" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" FontSize="20" Opacity="0.6" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+                <Grid>
+                    <TextBlock Text="{x:Bind UploadAnalysisVM.CurrentResult.FaceName,Mode=OneWay,FallbackValue=Angry}" Margin="0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" FontWeight="Bold" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+                    <TextBlock Text="{x:Bind UploadAnalysisVM.CurrentResult.Similarity,Mode=OneWay,FallbackValue=0.95}" Margin="20,0,0,0" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="40" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+                </Grid>
+                <Grid Margin="0,15,0,0">
+                    <Rectangle Height="5" Stroke="White" StrokeThickness="1"/>
+                    <Rectangle x:Name="ProgressRect" Height="5" Fill="White" Margin="0"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+
         <Grid d:IsHidden="True" Visibility="{x:Bind UploadAnalysisVM.ShowLoading,Mode=OneWay}" Grid.RowSpan="2">
             <Border x:Name="MaskBorder" Background="#B2000000"/>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">

@@ -399,7 +399,7 @@
                                     <VisualTransition GeneratedDuration="0:0:0.25" />
                                 </VisualStateGroup.Transitions>
                                 <VisualState x:Name="Unselected">
-                                     <Storyboard>
+                                    <Storyboard>
                                         <ColorAnimation To="Transparent" Storyboard.TargetName="InnerGrid" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" />
                                     </Storyboard>
                                 </VisualState>
@@ -656,7 +656,7 @@
                                 <ContentPresenter.RenderTransform>
                                     <CompositeTransform />
                                 </ContentPresenter.RenderTransform>
-                               
+
                             </ContentPresenter>
                         </Border>
                     </Grid>
@@ -722,7 +722,6 @@
                                         <DoubleAnimation Duration="0" To="0.6" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ContentPresenter" />
                                     </Storyboard>
                                 </VisualState>
-                               
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
@@ -743,7 +742,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">
-                    <ListViewItemPresenter CheckHintBrush="{ThemeResource ListViewItemCheckHintThemeBrush}" CheckBrush="{ThemeResource ListViewItemCheckThemeBrush}" ContentMargin="4" ContentTransitions="{TemplateBinding ContentTransitions}" CheckSelectingBrush="{ThemeResource ListViewItemCheckSelectingThemeBrush}" DragForeground="{ThemeResource ListViewItemDragForegroundThemeBrush}" DragOpacity="{ThemeResource ListViewItemDragThemeOpacity}" DragBackground="{ThemeResource ListViewItemDragBackgroundThemeBrush}" DisabledOpacity="{ThemeResource ListViewItemDisabledThemeOpacity}" FocusBorderBrush="{ThemeResource ListViewItemFocusBorderThemeBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" PointerOverBackgroundMargin="1" PlaceholderBackground="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" ReorderHintOffset="{ThemeResource ListViewItemReorderHintThemeOffset}" SelectedPointerOverBorderBrush="{ThemeResource ListViewItemSelectedPointerOverBorderThemeBrush}" SelectionCheckMarkVisualEnabled="True" SelectedForeground="{ThemeResource ListViewItemSelectedForegroundThemeBrush}" SelectedPointerOverBackground="#FFC3C3C3" SelectedBorderThickness="{ThemeResource ListViewItemCompactSelectedBorderThemeThickness}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" PointerOverBackground="#FFF1F1F1" />
+                    <ListViewItemPresenter CheckHintBrush="{ThemeResource ListViewItemCheckHintThemeBrush}" CheckBrush="{ThemeResource ListViewItemCheckThemeBrush}" ContentMargin="4" ContentTransitions="{TemplateBinding ContentTransitions}" CheckSelectingBrush="{ThemeResource ListViewItemCheckSelectingThemeBrush}" DragForeground="{ThemeResource ListViewItemDragForegroundThemeBrush}" DragOpacity="{ThemeResource ListViewItemDragThemeOpacity}" DragBackground="{ThemeResource ListViewItemDragBackgroundThemeBrush}" DisabledOpacity="{ThemeResource ListViewItemDisabledThemeOpacity}" FocusBorderBrush="#FF404040" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" PointerOverBackgroundMargin="1" PlaceholderBackground="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" ReorderHintOffset="{ThemeResource ListViewItemReorderHintThemeOffset}" SelectedPointerOverBorderBrush="{ThemeResource ListViewItemSelectedPointerOverBorderThemeBrush}" SelectionCheckMarkVisualEnabled="True" SelectedForeground="{ThemeResource ListViewItemSelectedForegroundThemeBrush}" SelectedPointerOverBackground="#FFC3C3C3" SelectedBorderThickness="{ThemeResource ListViewItemCompactSelectedBorderThemeThickness}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" PointerOverBackground="#FF373737" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

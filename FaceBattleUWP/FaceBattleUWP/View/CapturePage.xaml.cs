@@ -57,7 +57,7 @@ namespace FaceBattleUWP.View
 
         private bool _isCapturingFront = true;
 
-        private int _type;
+        private UploadStruct _metaData;
 
         #region Constructor, lifecycle and navigation
 
@@ -103,18 +103,6 @@ namespace FaceBattleUWP.View
                 await SetupUIAsync();
 
                 await InitializeCameraAsync();
-            }
-        }
-
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
-        {
-            await SetupUIAsync();
-            base.OnNavigatedTo(e);
-            await InitializeCameraAsync();
-
-            if(e.Parameter is int)
-            {
-                _type = (int)e.Parameter;
             }
         }
 
@@ -556,6 +544,19 @@ namespace FaceBattleUWP.View
         }
         #endregion Rotation helpers
 
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            await SetupUIAsync();
+            base.OnNavigatedTo(e);
+            await InitializeCameraAsync();
+
+            if (e.Parameter is UploadStruct)
+            {
+                _metaData = e.Parameter as UploadStruct;
+            }
+        }
+
         private async void PhotoButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             await TakePhotoAsync();
@@ -589,11 +590,8 @@ namespace FaceBattleUWP.View
 
         private void HandleTakenPhoto(StorageFile file)
         {
-            NavigationService.NaivgateToPage(typeof(UploadAnalysisPage), new UploadStruct()
-            {
-                File=file,
-                Type=_type,
-            });
+            _metaData.File = file;
+            NavigationService.NaivgateToPage(typeof(UploadAnalysisPage), _metaData);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FaceBattleUWP.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,12 +14,18 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
-
 namespace FaceBattleUWP.UC
 {
     public sealed partial class PublicControl : UserControl
     {
+        private MainViewModel MainVM
+        {
+            get
+            {
+                return this.DataContext as MainViewModel;
+            }
+        }
+
         public PublicControl()
         {
             this.InitializeComponent();

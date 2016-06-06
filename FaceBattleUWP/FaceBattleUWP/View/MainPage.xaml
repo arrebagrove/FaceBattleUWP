@@ -20,6 +20,12 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock x:Name="TitleTb" Text="FaceBattle" Foreground="{StaticResource FaceBattleBlackColor}" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS" FontSize="26.667" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <Button Command="{x:Bind MainVM.RefreshCommand,Mode=OneWay}" Style="{StaticResource ButtonCommonStyle2}" HorizontalAlignment="Right" Background="{x:Null}" Margin="0,0,10,0">
+                <Border>
+                    <SymbolIcon Margin="10" Symbol="Refresh" Foreground="Black"/>
+                </Border>
+            </Button>
+            <ProgressBar Visibility="{x:Bind MainVM.IsLoading,Mode=OneWay}" IsIndeterminate="True" VerticalAlignment="Top" Foreground="Black"/>
             <Grid Grid.Row="1" Margin="10,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -49,10 +55,10 @@
                    SelectedIndex="0" 
                    >
                 <PivotItem>
-                   
+                    <uc:PublicControl DataContext="{x:Bind MainVM,Mode=OneWay}"/>
                 </PivotItem>
                 <PivotItem>
-
+                    <uc:HistoryControl/>
                 </PivotItem>
                 <PivotItem>
                     <uc:MeControl/>

@@ -45,7 +45,7 @@ namespace FaceBattleUWP.Model
                     RaisePropertyChanged(() => UID);
                     if (AvatarBitmap == null)
                     {
-                        AvatarBitmap = new BitmapImage(new Uri(string.Format(BaseAvatarUrl, value % 24)));
+                        AvatarBitmap = new BitmapImage(new Uri(string.Format(BaseAvatarUrl, (value % 24) + 1)));
                     }
                 }
             }

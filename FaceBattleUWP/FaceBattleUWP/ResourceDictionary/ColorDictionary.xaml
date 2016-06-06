@@ -11,4 +11,8 @@
     <SolidColorBrush x:Key="FaceBattleMainDarkColor">#FFD1AB26</SolidColorBrush>
     <SolidColorBrush x:Key="FaceBattleLightColor">#FFFCDB63</SolidColorBrush>
     <SolidColorBrush x:Key="FaceBattleBlackColor">#FF1f1f1f</SolidColorBrush>
+    <SolidColorBrush x:Key="AngryColor">#FFAB2D2D</SolidColorBrush>
+    <SolidColorBrush x:Key="SadColor">#FF1F6C90</SolidColorBrush>
+    <SolidColorBrush x:Key="HappyColor">#FFE7B338</SolidColorBrush>
+    <SolidColorBrush x:Key="NormalColor">#FF2F906B</SolidColorBrush>
 </ResourceDictionary>
